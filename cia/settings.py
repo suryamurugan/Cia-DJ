@@ -25,7 +25,7 @@ SECRET_KEY = '#s6=@c-7v412-p6nxp17a@p^%rau--v=t&vd!7dh(sl&f4a4p%'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['139.59.61.35']
 
 
 # Application definition
@@ -87,10 +87,22 @@ WSGI_APPLICATION = 'cia.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
+'''
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
+'''
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'cia',
+        'USER': 'jarvis',
+        'PASSWORD': 'cia_1234',
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
 

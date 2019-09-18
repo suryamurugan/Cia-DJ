@@ -25,7 +25,8 @@ class Dept(models.Model):
 
 
 class User(AbstractUser):
-    u_id= models.IntegerField(primary_key=True)
+    #u_id= models.IntegerField(primary_key=True)
+    u_id= models.AutoField(primary_key=True)
     usn = models.TextField(max_length=10, blank=True)
     dept = models.ForeignKey(Dept,on_delete=models.CASCADE,null=True,blank=True)
     phone_number = PhoneNumberField(blank=True)
