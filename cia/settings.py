@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'api',
     'allauth',
     'allauth.account',
+    'allauth.socialaccount',
     'rest_auth.registration',
     'rest_framework',
     'rest_framework.authtoken',  # <-- Here
@@ -149,6 +150,7 @@ AUTHENTICATION_BACKENDS = (
 )
 
 
+ACCOUNT_EMAIL_VERIFICATION="none"
 # for rest auth registeration
 REST_AUTH_SERIALIZERS = {
     #"USER_DETAILS_SERIALIZER": "api.serializers.CustomUserDetailsSerializer",

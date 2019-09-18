@@ -15,9 +15,19 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,re_path, include
+from django.conf.urls import url
+
+from allauth.account.views import confirm_email
+
 from api.views import HelloView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('hello/', HelloView.as_view(), name='hello'),
-    re_path('api/(?P<version>(v1|v2))/', include('api.urls'))
+   # url(r'^api/v1/rest-auth/registration/account-confirm-email/(?P<key>[-/\w]+)/$', confirm_email, name='account_confirm_email'), 
+
+    re_path('api/(?P<version>(v1|v2))/', include('api.urls')),
+    #url(r'rest-auth/registration/ ^account-confirm-email/(?P<key>[-:\w]+)/$', ConfirmEmailView.as_view(),name='account_confirm_email'),
+
+   
+
 ]
