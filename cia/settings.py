@@ -147,3 +147,13 @@ STATIC_URL = '/static/'
 AUTHENTICATION_BACKENDS = (
     ('django.contrib.auth.backends.ModelBackend'),
 )
+
+
+# for rest auth registeration
+REST_AUTH_SERIALIZERS = {
+    #"USER_DETAILS_SERIALIZER": "api.serializers.CustomUserDetailsSerializer",
+    "USER_DETAILS_SERIALIZER": "api.serializers.UserSerializer",
+}
+REST_AUTH_REGISTER_SERIALIZERS = {
+    "REGISTER_SERIALIZER": "api.serializers.CustomRegisterSerializer",
+}

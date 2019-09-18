@@ -6,7 +6,7 @@ from rest_framework.mixins import CreateModelMixin
 from django.contrib.auth import get_user_model
 from .serializers import UserSerializer
 from rest_framework.permissions import AllowAny
-
+from rest_auth.registration.views import RegisterView
 from .models import User
 from . import serializers
 
@@ -25,3 +25,7 @@ class UserCreateAPIView(generics.CreateAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
     permission_classes = (AllowAny,)
+
+
+class CustomRegisterView(RegisterView):
+        queryset = User.objects.all()
