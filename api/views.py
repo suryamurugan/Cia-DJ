@@ -4,10 +4,10 @@ from rest_framework import generics
 from rest_framework.viewsets import GenericViewSet
 from rest_framework.mixins import CreateModelMixin
 from django.contrib.auth import get_user_model
-from .serializers import UserSerializer
+from .serializers import UserSerializer,EventsSerializer
 from rest_framework.permissions import AllowAny
 from rest_auth.registration.views import RegisterView
-from .models import User
+from .models import User,Events
 from . import serializers
 
 class HelloView(APIView):
@@ -29,3 +29,12 @@ class UserCreateAPIView(generics.CreateAPIView):
 
 class CustomRegisterView(RegisterView):
         queryset = User.objects.all()
+
+
+
+class ListEventsView(generics.ListAPIView):
+    """
+    Provides a get method handler.
+    """
+    queryset = Events.objects.all()
+    serializer_class = EventsSerializer

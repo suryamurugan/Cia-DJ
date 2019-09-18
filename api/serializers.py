@@ -1,7 +1,7 @@
 from rest_framework.serializers import ModelSerializer
 from rest_auth.registration.serializers import RegisterSerializer
 
-from .models import User
+from .models import User,Events
 from rest_framework import serializers
 
 class UserSerializer(ModelSerializer):
@@ -35,3 +35,10 @@ class CustomRegisterSerializer(RegisterSerializer):
                 'usn' : self.validated_data.get('usn',''),
                
         }
+
+        
+
+class EventsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Events
+        fields = ("e_id","e_state","e_title","e_date",'e_start_time','e_end_time','e_venue','e_organizer','e_description','e_score','e_registration_link','e_photos_link','e_medium_link')
