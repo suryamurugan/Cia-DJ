@@ -226,6 +226,9 @@ class NewRegisterSerializer(serializers.Serializer):
     password2 = serializers.CharField(write_only=True)
     
     usn = serializers.CharField(required=True)
+    dept = serializers.IntegerField(required=True)
+    ut_id = serializers.IntegerField(required=True)
+    phone_number = serializers.CharField(required=True)
     
    # user_t = serializers.IntegerField(write_only=True)
     #user_type = PrimaryKeyRelatedField()
@@ -263,6 +266,7 @@ class NewRegisterSerializer(serializers.Serializer):
             'email': self.validated_data.get('email', ''),
             'usn': self.validated_data.get('usn', ''),
             'phone_number': self.validated_data.get('phone_number', ''),
+            'ut_id': self.validated_data.get('ut_id', ''),
         }
 
     def save(self, request):
@@ -272,7 +276,8 @@ class NewRegisterSerializer(serializers.Serializer):
         adapter.save_user(request, user, self)
         setup_user_email(request, user, [])
 
-        user.address = self.cleaned_data.get('usn')
+        #user.address = self.cleaned_data.get('usn')
+
         #user.user_type = self.cleaned_data.get('user_type')
 
         user.save()

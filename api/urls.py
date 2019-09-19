@@ -25,6 +25,7 @@ urlpatterns = [
    # path('admin/',admin.site.urls, name='account_confirm_email'),
    path('api-token-auth/', obtain_auth_token, name='api_token_auth'),  # <-- And here
    path('events/', ListEventsView.as_view(), name='getevents'),  # <-- And here
+  # path('news/', ListNewsView.as_view(), name='getnews'),  # <-- And here
    # path('auth/', CustomRegisterView.as_view(), name="auth-all"),
    #url(r'^', include('django.contrib.auth.urls')),
 

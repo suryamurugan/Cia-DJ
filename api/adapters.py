@@ -15,6 +15,8 @@ class CustomUserAccountAdapter(DefaultAccountAdapter):
         user_field(user, 'password1', request.data.get('password1', ''))
         user_field(user, 'email', request.data.get('email', ''))
         user_field(user, 'usn', request.data.get('usn', ''))
+        user_field(user, 'dept', request.data.get('dept', ''))
         user_field(user, 'phone_number', request.data.get('phone_number', ''))
+        user_field(user, 'ut_id', request.data.get('ut_id', ''))
         user.save()
         return user

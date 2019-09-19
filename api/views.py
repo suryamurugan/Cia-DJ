@@ -40,7 +40,7 @@ class ListEventsView(generics.ListAPIView):
     """
     queryset = Events.objects.all()
     serializer_class = EventsSerializer
-
+'''
 class ListNewsView(generics.ListAPIView):
     queryset = News.objects.all()
-    serializer_class = NewsSerializer
+    serializer_class = NewsSerializer'''

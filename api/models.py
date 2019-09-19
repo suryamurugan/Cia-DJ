@@ -33,12 +33,14 @@ class User(AbstractUser):
     #u_id= models.IntegerField(primary_key=True)
     u_id= models.AutoField(primary_key=True)
     usn = models.TextField(max_length=10, blank=True)
-    dept = models.ForeignKey(Dept,on_delete=models.CASCADE,null=True,blank=True)
+    #dept = models.ForeignKey(Dept,on_delete=models.CASCADE,null=True,blank=True)
+    dept = models.IntegerField(default=1,blank=True,null=True)
     phone_number = PhoneNumberField(blank=True)
-    user_t = models.ForeignKey(UserType,on_delete=models.CASCADE,null=True,blank=True)
+    #user_t = models.ForeignKey(UserType,on_delete=models.CASCADE,null=True,blank=True)
+    ut_id = models.IntegerField(default=1,blank=True,null=True)
     #ut = models.IntegerField(blank=True,default=1)
     def __str__(self):
-        return "{} - {} - {} - {} - {} - {} - {}".format(self.u_id, self.usn,self.username,self.dept,self.email,self.phone_number,self.user_t)
+        return "{} - {} - {} - {} - {} - {} - {}".format(self.u_id, self.usn,self.username,self.dept,self.email,self.phone_number,self.ut_id)
  
 
 
