@@ -7,8 +7,10 @@ from django.contrib.auth import get_user_model
 from .serializers import UserSerializer,EventsSerializer
 from rest_framework.permissions import AllowAny
 from rest_auth.registration.views import RegisterView
-from .models import User,Events
+from .models import User,Events,News
 from . import serializers
+
+#from rest_framework import serializers
 
 class HelloView(APIView):
     def get(self, request):
@@ -38,3 +40,7 @@ class ListEventsView(generics.ListAPIView):
     """
     queryset = Events.objects.all()
     serializer_class = EventsSerializer
+
+class ListNewsView(generics.ListAPIView):
+    queryset = News.objects.all()
+    serializer_class = NewsSerializer

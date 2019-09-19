@@ -154,8 +154,12 @@ ACCOUNT_EMAIL_VERIFICATION="none"
 # for rest auth registeration
 REST_AUTH_SERIALIZERS = {
     #"USER_DETAILS_SERIALIZER": "api.serializers.CustomUserDetailsSerializer",
-    "USER_DETAILS_SERIALIZER": "api.serializers.UserSerializer",
+   # "USER_DETAILS_SERIALIZER": "api.serializers.UserSerializer",
+    "USER_DETAILS_SERIALIZER": "api.serializers.CustomUserDetailsSerializer",
 }
 REST_AUTH_REGISTER_SERIALIZERS = {
-    "REGISTER_SERIALIZER": "api.serializers.CustomRegisterSerializer",
+    "REGISTER_SERIALIZER": "api.serializers.NewRegisterSerializer",
+    #"REGISTER_SERIALIZER": "api.serializers.RegisterSerializerCustom",
 }
+
+ACCOUNT_ADAPTER = 'api.adapters.CustomUserAccountAdapter'

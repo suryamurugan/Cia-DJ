@@ -15,6 +15,11 @@ class UserType(models.Model):
     def __str__(self):
         return "{} - {}".format(self.ut_id, self.ut_name)
 
+class UserTypeRegister(models.Model):
+    ut_id = models.IntegerField(primary_key=True)
+    ut_name= models.CharField(max_length=255, null=False, default='type')
+    def __str__(self):
+        return "{} - {}".format(self.ut_id, self.ut_name)
 
 
 class Dept(models.Model):
@@ -76,8 +81,11 @@ class News(models.Model):
     n_author = models.ForeignKey(User,on_delete=models.CASCADE)
     n_datetime = models.DateTimeField(default=datetime.now(), blank=True)
     n_image = models.ImageField(upload_to = 'images/', default = 'news/no-img.jpg')
+    n_link = models.CharField(max_length=255,null=False, blank=True)
     def __str__(self):
-        return "{} - {}".format(self.news_id, self.news_title)
+        return "{} - {}".format(self.n_id, self.n_title)
 
 
-    
+
+##########################################################################
+
