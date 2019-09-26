@@ -80,6 +80,7 @@ class News(models.Model):
     #"id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, 
     n_id = models.IntegerField(primary_key=True)
     n_title = models.CharField(max_length=255, null=False, default='title')
+    n_desc = models.CharField(max_length=500, null=False, default='title')
     n_author = models.ForeignKey(User,on_delete=models.CASCADE)
     n_datetime = models.DateTimeField(default=datetime.now(), blank=True)
     n_image = models.ImageField(upload_to = 'images/', default = 'news/no-img.jpg')

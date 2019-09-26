@@ -4,11 +4,16 @@ from rest_framework import generics
 from rest_framework.viewsets import GenericViewSet
 from rest_framework.mixins import CreateModelMixin
 from django.contrib.auth import get_user_model
-from .serializers import UserSerializer,EventsSerializer
+from .serializers import UserSerializer,EventsSerializer,NewsSerializer
 from rest_framework.permissions import AllowAny
 from rest_auth.registration.views import RegisterView
 from .models import User,Events,News
 from . import serializers
+from rest_framework.decorators import api_view
+from django.http import Http404
+from rest_framework import status
+
+
 
 #from rest_framework import serializers
 
@@ -40,7 +45,16 @@ class ListEventsView(generics.ListAPIView):
     """
     queryset = Events.objects.all()
     serializer_class = EventsSerializer
-'''
+
 class ListNewsView(generics.ListAPIView):
     queryset = News.objects.all()
-    serializer_class = NewsSerializer'''
+    serializer_class = NewsSerializer
+
+
+@api_view(['GET','POST'])
+def attend(request,version):
+    if request.method == 'POST':
+        print(request.data)
+        return Response(status=status.HTTP_201_CREATED)
+
+    
