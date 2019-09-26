@@ -8,7 +8,7 @@ from allauth.account.adapter import get_adapter
 from allauth.account.utils import setup_user_email
 from phonenumber_field.modelfields import PhoneNumberField
 
-from .models import User,Events,UserType,UserTypeRegister,News
+from .models import User,Events,UserType,UserTypeRegister,News,AttendRegister
 from rest_framework import serializers
 
 class UserSerializer(ModelSerializer):
@@ -94,6 +94,11 @@ class NewsSerializer(serializers.ModelSerializer):
     class Meta:
         model = News
         fields = ("n_id","n_title","n_desc","n_author","n_datetime",'n_image','n_link')
+class AttendRegisterSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = AttendRegister
+        fields = ("arid","e_id","u_id","a_datetime")
+
 
 
 class UserTypeSerializer(serializers.ModelSerializer):

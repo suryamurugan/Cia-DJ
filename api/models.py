@@ -61,14 +61,19 @@ class Events(models.Model):
     e_registration_link = models.CharField(max_length=255, null=True, blank=True)
     e_photos_link = models.CharField(max_length=255, null=True,blank=True)
     e_medium_link = models.CharField(max_length=255, null=True,blank=True)
+    e_code = models.CharField(max_length=255, null=True,blank=True)
+    
     # name of artist or group/band
     def __str__(self):
         return "{} - {}".format(self.e_id, self.e_title)
 
 class AttendRegister(models.Model):
-    arid = models.IntegerField(primary_key=True)
+    arid = models.AutoField(primary_key=True)
     e_id = models.ForeignKey(Events, on_delete=models.CASCADE)
+   # e_score = models.For
     u_id = models.ForeignKey(User,on_delete=models.CASCADE)
+    a_datetime = models.DateTimeField(default=datetime.now(), blank=True)
+    
     
     def __str__(self):
         return "{} - {}".format(self.arid, self.e_id)
@@ -88,5 +93,4 @@ class News(models.Model):
     def __str__(self):
         return "{} - {}".format(self.n_id, self.n_title)
 ##########################################################################
-
 
