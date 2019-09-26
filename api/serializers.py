@@ -83,7 +83,7 @@ class CustomUserDetailsSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ('email','name','usn')
+        fields = ('email','username','usn','')
         read_only_fields = ('email',)
 
 class EventsSerializer(serializers.ModelSerializer):

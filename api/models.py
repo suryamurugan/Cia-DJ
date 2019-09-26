@@ -87,8 +87,6 @@ class News(models.Model):
     n_link = models.CharField(max_length=255,null=False, blank=True)
     def __str__(self):
         return "{} - {}".format(self.n_id, self.n_title)
-
-
-
 ##########################################################################
+
 

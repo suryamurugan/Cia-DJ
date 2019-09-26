@@ -12,6 +12,8 @@ from . import serializers
 from rest_framework.decorators import api_view
 from django.http import Http404
 from rest_framework import status
+from rest_framework.authtoken.models import Token
+
 
 
 
@@ -54,7 +56,8 @@ class ListNewsView(generics.ListAPIView):
 @api_view(['GET','POST'])
 def attend(request,version):
     if request.method == 'POST':
-        print(request.data)
-        return Response(status=status.HTTP_201_CREATED)
+        token = Token.objects.get(key=request.data['key'])
+        
+        return Response({'token': token.key, 'id': token.user.username})
 
     
