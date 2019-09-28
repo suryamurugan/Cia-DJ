@@ -18,11 +18,13 @@ from django.urls import path,re_path, include
 from django.conf.urls import url
 
 from allauth.account.views import confirm_email
-from api.views import attend
+from api.views import attend,something,getUser
 
 from api.views import HelloView
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('sarath/<something>/',something),
+    path('getUser/',getUser),
     path('hello/', HelloView.as_view(), name='hello'),
    # url(r'^api/v1/rest-auth/registration/account-confirm-email/(?P<key>[-/\w]+)/$', confirm_email, name='account_confirm_email'), 
 

@@ -1,6 +1,6 @@
 from django.urls import path,include
 from rest_framework.authtoken.views import obtain_auth_token  # <-- Here
-from .views import CreateUserView,UserCreateAPIView,CustomRegisterView,ListEventsView,ListNewsView,attend,getstats
+from .views import CreateUserView,UserCreateAPIView,CustomRegisterView,ListEventsView,ListNewsView,attend,getstats,ProjectView
 from allauth.account.views import confirm_email
 from django.contrib import admin
 from django.conf.urls import url
@@ -12,10 +12,12 @@ from rest_auth.registration.views import RegisterView, VerifyEmailView, ConfirmE
 
 urlpatterns = [
    # path('events/', ListEventsView.as_view(), name="events-all"),
-   # path('news/', ListNewsView.as_view(), name="news-all"),
+   # path('news/', ListNewsView.as_view(), name="news-all"),ImproperlyConfigured at /api/v2/rest-auth/user/
+
    # path('users/', UserListView.as_view(), name="events-all"),
   path('attend/', attend), # FOR ATTENDANCE
   path('getstats/',getstats),
+   path('getProjects/',ProjectView.as_view()),
    path('users/', CustomRegisterView.as_view(),name="something"),  #DJANGO USER
    path('rest-auth/', include('rest_auth.urls')),
   # url(r'^rest-auth/registration/account-confirm-email/(?P<key>[-:\w]+)/$', TemplateView.as_view(),

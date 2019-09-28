@@ -8,7 +8,7 @@ from allauth.account.adapter import get_adapter
 from allauth.account.utils import setup_user_email
 from phonenumber_field.modelfields import PhoneNumberField
 
-from .models import User,Events,UserType,UserTypeRegister,News,AttendRegister
+from .models import User,Events,UserType,UserTypeRegister,News,AttendRegister,Project
 from rest_framework import serializers
 
 class UserSerializer(ModelSerializer):
@@ -52,7 +52,7 @@ class CustomRegisterSerializer(RegisterSerializer):
 
     email = serializers.EmailField(required=True)
     password1 = serializers.CharField(write_only=True)
-    name = serializers.CharField(required=True)
+    username = serializers.CharField(required=True)
     usn = serializers.CharField(required=True)
     
     
@@ -63,7 +63,7 @@ class CustomRegisterSerializer(RegisterSerializer):
         return {
                 'password1': self.validated_data.get('password1', ''),
                 'email': self.validated_data.get('email', ''),
-                'name': self.validated_data.get('name', ''),
+                'username': self.validated_data.get('username', ''),
                 'usn' : self.validated_data.get('usn',''),
                
         }
@@ -83,7 +83,7 @@ class CustomUserDetailsSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ('email','username','usn','')
+        fields = ('email','username','usn')
         read_only_fields = ('email',)
 
 class EventsSerializer(serializers.ModelSerializer):
@@ -98,6 +98,11 @@ class AttendRegisterSerializer(serializers.ModelSerializer):
     class Meta:
         model = AttendRegister
         fields = ("arid","e_id","u_id","a_datetime")
+
+class ProjectSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Project
+        fields = '__all__'
 
 
 

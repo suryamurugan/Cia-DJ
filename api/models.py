@@ -88,9 +88,21 @@ class News(models.Model):
     n_desc = models.CharField(max_length=500, null=False, default='title')
     n_author = models.ForeignKey(User,on_delete=models.CASCADE)
     n_datetime = models.DateTimeField(default=datetime.now(), blank=True)
-    n_image = models.ImageField(upload_to = 'images/', default = 'news/no-img.jpg')
+    n_image = models.ImageField(upload_to = 'images/news/', default = 'news/no-img.jpg')
     n_link = models.CharField(max_length=255,null=False, blank=True)
     def __str__(self):
         return "{} - {}".format(self.n_id, self.n_title)
 ##########################################################################
+
+class Project(models.Model):
+    p_id = models.AutoField(primary_key=True)
+    p_state = models.BooleanField(default=True)
+    p_title = models.CharField(max_length=100, null=False, default='title')
+    p_image = models.ImageField(upload_to = 'images/projects/', default = 'projects/no-img.jpg')
+    u_id = models.ForeignKey(User,on_delete=models.CASCADE)
+    p_datetime = models.DateTimeField(default=datetime.now(), blank=True)
+    p_desc = models.CharField(max_length=500, null=False, default='description')
+    p_medium_link = models.CharField(max_length=250, null=False, default='https://www.medium.com')
+    p_github_link = models.CharField(max_length=250, null=False, default='https://www.github.com')
+    p_apply_link = models.CharField(max_length=250, null=False, default='https://www.google.com')
 
