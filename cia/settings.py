@@ -156,10 +156,37 @@ REST_AUTH_SERIALIZERS = {
     #"USER_DETAILS_SERIALIZER": "api.serializers.CustomUserDetailsSerializer",
    # "USER_DETAILS_SERIALIZER": "api.serializers.UserSerializer",
     "USER_DETAILS_SERIALIZER": "api.serializers.CustomUserDetailsSerializer",
+    #"LOGIN_SERIALIZER":"api.serializers.CustomLoginSerializer",
+    
 }
 REST_AUTH_REGISTER_SERIALIZERS = {
     "REGISTER_SERIALIZER": "api.serializers.NewRegisterSerializer",
     #"REGISTER_SERIALIZER": "api.serializers.RegisterSerializerCustom",
 }
 
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ]
+}
+
+
+'''
+REST_AUTH_LOGIN_SERIALIZERS = {
+    "LOGIN_SERIALIZER":"api.serializers.CustomLoginSerializer",
+}
+
+REST_AUTH_SERIALIZERS = {
+    'LOGIN_SERIALIZER': 'path.to.custom.LoginSerializer',
+    'TOKEN_SERIALIZER': 'path.to.custom.TokenSerializer',
+    ...
+}'''
+
 ACCOUNT_ADAPTER = 'api.adapters.CustomUserAccountAdapter'
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'communities.atria@gmail.com'
+EMAIL_HOST_PASSWORD = 'berylliumguacamoleb'
+EMAIL_PORT = 587

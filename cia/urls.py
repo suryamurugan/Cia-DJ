@@ -20,6 +20,8 @@ from django.conf.urls import url
 from allauth.account.views import confirm_email
 from api.views import attend,something,getUser
 
+from django.views.generic import TemplateView
+
 from api.views import HelloView
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -29,6 +31,7 @@ urlpatterns = [
    # url(r'^api/v1/rest-auth/registration/account-confirm-email/(?P<key>[-/\w]+)/$', confirm_email, name='account_confirm_email'), 
 
     re_path('api/(?P<version>(v1|v2))/', include('api.urls')),
+    url(r'^account_inactive/$',TemplateView.as_view(),name = 'account_inactive'),
     #url(r'rest-auth/registration/ ^account-confirm-email/(?P<key>[-:\w]+)/$', ConfirmEmailView.as_view(),name='account_confirm_email'),
     
 

@@ -47,7 +47,7 @@ class User(AbstractUser):
 class Events(models.Model):
     # song title - s
     #"id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, 
-    e_id = models.IntegerField(primary_key=True)
+    e_id = models.AutoField(primary_key=True)
     e_state = models.BooleanField(default=True)
     e_title = models.CharField(max_length=255, null=False, default='title')
     e_date = models.DateField('Event Date', default=datetime.now, blank=True)

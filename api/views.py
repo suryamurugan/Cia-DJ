@@ -13,6 +13,27 @@ from rest_framework.decorators import api_view
 from django.http import Http404
 from rest_framework import status
 from rest_framework.authtoken.models import Token
+from django.contrib.sites.shortcuts import get_current_site
+from .tokens import account_activation_token
+from django.utils.encoding import force_bytes, force_text
+from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
+from django.template.loader import render_to_string
+
+
+from rest_framework import status
+from rest_framework.response import Response
+from allauth.account import app_settings as allauth_settings
+from allauth.account.utils import complete_signup
+from rest_auth.views import LoginView
+from rest_auth.registration.views import RegisterView
+from rest_auth.app_settings import (
+    TokenSerializer,  UserDetailsSerializer, JWTSerializer, create_token
+)
+from rest_auth.utils import jwt_encode
+
+
+from cia import settings
+from django.core.mail import EmailMessage
 
 
 
@@ -128,4 +149,140 @@ def getstats(request,version):
         except:
             return Response({"response":False})
         return Response({"response":False})
-       
+
+# CUSTOM LOGIN VIEW 
+class LoginUserDetailView(LoginView):
+    def get_response_serializer(self):
+        if getattr(settings, 'REST_USE_JWT', False):
+            response_serializer = JWTSerializer
+        elif getattr(settings, 'REST_USE_TOKEN', True):
+            response_serializer = TokenSerializer
+        else:
+            response_serializer = UserDetailsSerializer
+        return response_serializer
+
+    def login(self):
+        self.user = self.serializer.validated_data['user']
+
+        if getattr(settings, 'REST_USE_JWT', False):
+            self.token = jwt_encode(self.user)
+        elif getattr(settings, 'REST_USE_TOKEN', True):
+            self.token = create_token(self.token_model, self.user,
+                                      self.serializer)
+
+        if getattr(settings, 'REST_SESSION_LOGIN', True):
+            self.process_login()
+
+    def get_response(self):
+        serializer_class = self.get_response_serializer()
+
+        if getattr(settings, 'REST_USE_JWT', False):
+            data = {
+                'user': self.user,
+                'token': self.token
+            }
+            serializer = serializer_class(instance=data,
+                                          context={'request': self.request})
+        elif getattr(settings, 'REST_USE_TOKEN', True):
+            serializer = serializer_class(instance=self.token,
+                                          context={'request': self.request})
+        else:
+            serializer = serializer_class(instance=self.user,
+                                          context={'request': self.request})
+
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+### NEXT CHECK - WORKING CUSTOM LOGIN - OVERRIDING get_response from LOGIN-VIEW
+class CustomLoginView(LoginView):
+    '''def get_response(self):
+        orginal_response = super().get_response()
+        print(orginal_response['key'])
+        mydata = {"message": "some message", "status": "success"}
+        orginal_response.data.update(mydata)
+        return orginal_response'''
+    def get_response(self):
+        serializer_class = self.get_response_serializer()
+
+        if getattr(settings, 'REST_USE_JWT', False):
+            data = {
+                'user': self.user,
+                'token': self.token
+            }
+            serializer = serializer_class(instance=data,
+                                          context={'request': self.request})
+        else:
+            serializer = serializer_class(instance=self.token,
+                                          context={'request': self.request})
+
+        response = Response(serializer.data, status=status.HTTP_200_OK)
+        if getattr(settings, 'REST_USE_JWT', False):
+            from rest_framework_jwt.settings import api_settings as jwt_settings
+            if jwt_settings.JWT_AUTH_COOKIE:
+                from datetime import datetime
+                expiration = (datetime.utcnow() + jwt_settings.JWT_EXPIRATION_DELTA)
+                response.set_cookie(jwt_settings.JWT_AUTH_COOKIE,
+                                    self.token,
+                                    expires=expiration,
+                                    httponly=True)
+        #return response
+        orginal_response = response
+        #orginal_response = super().get_response()
+        print(orginal_response)
+        mydata = {"username": self.user.username,"email": self.user.email, "status": "success"}
+        orginal_response.data.update(mydata)
+        return orginal_response
+
+## CUSTOM REGISTER VIEW
+
+class VeryNewCustomRegisterView(RegisterView):
+    def get_response_data(self, user):
+        if allauth_settings.EMAIL_VERIFICATION == \
+                allauth_settings.EmailVerificationMethod.MANDATORY:
+            return {"detail": _("Verification e-mail sent.")}
+
+        if getattr(settings, 'REST_USE_JWT', False):
+            data = {
+                'user': user,
+                'token': self.token
+            }
+            return JWTSerializer(data).data
+        else:
+            #return TokenSerializer(user.auth_token).data
+            orginal_response = TokenSerializer(user.auth_token).data
+            print("ORIGINAL RESPONSE")
+            print(orginal_response)
+            #orginal_response = super().get_response()
+            mydata = {"username": user.username,"email": user.email, "status": "success"}
+            #current_site = get_current_site(request)
+            message = render_to_string('acc_active_email.html', {
+                'user':user, 'domain':'current_site.domain',
+                'uid': urlsafe_base64_encode(force_bytes(user.pk)),
+                'token': account_activation_token.make_token(user),
+            })
+            mail_subject = 'Activate your CIA account.'
+            to_email = user.email
+            email = EmailMessage(mail_subject, message, to=[to_email])
+            email.send()
+            print('MY DATA')
+            print(mydata)
+            orginal_response.update(mydata)
+            print("ORIGINAL RESPONSE")
+            print(orginal_response)
+            return orginal_response
+
+
+
+def activate(request, uidb64, token):
+    try:
+        uid = force_text(urlsafe_base64_decode(uidb64))
+        user = User.objects.get(pk=uid)
+    except(TypeError, ValueError, OverflowError, User.DoesNotExist):
+        user = None
+    if user is not None and account_activation_token.check_token(user, token):
+        user.is_active = True
+        user.save()
+        login(request, user)
+        return HttpResponse('Thank you for your email confirmation. Now you can login your account.')
+    else:
+        return HttpResponse('Activation link is invalid!')
+
