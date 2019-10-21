@@ -229,8 +229,13 @@ class CustomLoginView(LoginView):
         #orginal_response = super().get_response()
         print(orginal_response)
         mydata = {"username": self.user.username,"email": self.user.email, "status": "success"}
+
         orginal_response.data.update(mydata)
-        return orginal_response
+        if self.user.is_active:
+            return orginal_response
+        else:
+            mydata = {"username": '',"email": '', "status": "Please activate your account"}
+            return orginal_response
 
 ## CUSTOM REGISTER VIEW
 
