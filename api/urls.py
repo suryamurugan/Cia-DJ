@@ -7,6 +7,7 @@ from django.conf.urls import url
 from django.views.generic import TemplateView
 
 from rest_auth.registration.views import RegisterView, VerifyEmailView, ConfirmEmailView
+from django.contrib.auth.views import password_reset_confirm
 
 
 
@@ -24,6 +25,9 @@ urlpatterns = [
   #      name='account_confirm_email'),
    url(r'rest-auth/registration/account-confirm-email/(?P<key>[-:\w]+)/$', ConfirmEmailView.as_view(),name='account_confirm_email'),
    path('rest-auth/registration/', include('rest_auth.registration.urls')), #REST USER
+    
+
+
   # path(r'^account-confirm-email/(?P<key>[-:\w]+)/$', TemplateView.as_view(),name='account_confirm_email'), #REST USER
    
 
@@ -38,11 +42,13 @@ urlpatterns = [
   url(r'^login/$', LoginUserDetailView.as_view(), name='rest_login'),
   url(r'^custom/login/$', CustomLoginView.as_view(), name='rest_login'),
   url(r'^custom/register/$', VeryNewCustomRegisterView.as_view(), name='rest_register'),
-    url(r'^activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
-        activate, name='activate'),
+  # url(r'^activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
+   #url(r'^activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
+    #    activate, name='activate'),
   #url(r'^signup/$', views.signup, name='signup'),
   #url(r'^account_inactive/$',TemplateView.as_view(),name = 'account_inactive'),
    path(r'^*account-confirm-email/(?P<key>[-:\w]+)/$', TemplateView.as_view(), name='account_confirm_email'),  # <-- And here
+
 #   url(r'^account-confirm-email/(?P<key>[-:\w]+)/$', TemplateView.as_view(),
     ##    name='account_confirm_email'),
 ]
