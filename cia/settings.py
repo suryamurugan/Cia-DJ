@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'rest_auth.registration',
+        'django_rest_passwordreset',
+
     'rest_framework',
     'rest_framework.authtoken',  # <-- Here
     'rest_auth',
@@ -191,3 +193,4 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'communities.atria@gmail.com'
 EMAIL_HOST_PASSWORD = 'berylliumguacamoleb'
 EMAIL_PORT = 587
+DEFAULT_FROM_EMAIL  = 'communities.atria@gmail.com'

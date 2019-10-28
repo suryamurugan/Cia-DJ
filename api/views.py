@@ -29,8 +29,9 @@ from rest_framework import status
 from rest_framework.response import Response
 from allauth.account import app_settings as allauth_settings
 from allauth.account.utils import complete_signup
-from rest_auth.views import LoginView
+from rest_auth.views import LoginView,PasswordResetView
 from rest_auth.registration.views import RegisterView
+
 from rest_auth.app_settings import (
     TokenSerializer,  UserDetailsSerializer, JWTSerializer, create_token
 )
@@ -228,7 +229,7 @@ class CustomLoginView(LoginView):
         orginal_response = response
         #orginal_response = super().get_response()
         print(orginal_response)
-        mydata = {"username": self.user.username,"email": self.user.email, "status": "success"}
+        mydata = {"username": self.user.username,"email": self.user.email, "status": "success",'non_field_errors': ['NONE']}
 
         orginal_response.data.update(mydata)
         if self.user.is_active:
