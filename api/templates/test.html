@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<section class="jumbotron text-center" style="padding-top: 30px;padding-bottom: 0px;background:white">
+    <div class="container">
+        <h1>CIA</h1><span class="badge badge-secondary"></span></h1>
+        <h4 class="jumbotron-heading">PASSWORD RESET</h4> 
+        <p class="lead text-muted">Enter your CIA email address that you used to register. We'll send you an email with your username and a link to reset your password.</p>
+    </div>
+
+
+   
+            <form action="139.59.61.35:8000/api/v1/rest-auth/password/reset/" method="post" novalidate>
+        <div class="row">
+            <div class="col-lg-4 col-lg-offset-4">
+                <div class="input-group">
+                    <input type="text" class="form-control" id="email" name="email"/>
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="submit" >Send</button>
+                    </span>
+                </div><!-- /input-group -->
+            </div><!-- /.col-lg-4 -->
+        </div><!-- /.row -->
+
+       
+    </form>
+</section>
+
+{% endblock %}

@@ -6,3 +6,8 @@ class UserSignUpForm(UserCreationForm):
     class Meta:
         model = User
         fields = ('username', 'email', 'password1', 'password2')
+
+
+class ResetCustomForm(forms.ModelForm):
+    class Meta:
+        fields  = '__all__'

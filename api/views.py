@@ -258,7 +258,7 @@ class VeryNewCustomRegisterView(RegisterView):
             print("ORIGINAL RESPONSE")
             print(orginal_response)
             #orginal_response = super().get_response()
-            mydata = {"username": user.username,"email": user.email, "status": "success"}
+            mydata = {"username": user.username,"email": user.email, "status": "ACTIVATE"}
             #current_site = get_current_site(request)
             message = render_to_string('acc_active_email.html', {
                 'user':user, 'domain':'current_site.domain',
@@ -310,3 +310,6 @@ def something(request,uid, token ):
         return HttpResponse('Activation link is invalid!')
 #    return Response({"uid":uid,"token":token})
 
+
+def testReset(request):
+    return render(request,'test.html')
