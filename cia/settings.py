@@ -148,12 +148,20 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 AUTHENTICATION_BACKENDS = (
-    #('django.contrib.auth.backends.ModelBackend'),
+   # ('django.contrib.auth.backends.ModelBackend'),
     ('django.contrib.auth.backends.AllowAllUsersModelBackend'),
+  #  ('api.models.EmailOrUsernameModelBackend'),
+     # `allauth` specific authentication methods, such as login by e-mail
+ ("allauth.account.auth_backends.AuthenticationBackend"),
 )
 
 
-ACCOUNT_EMAIL_VERIFICATION="none"
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_EMAIL_REQUIRED = True   
+ACCOUNT_USERNAME_REQUIRED = False
+
+
+#ACCOUNT_EMAIL_VERIFICATION="none"
 # for rest auth registeration
 REST_AUTH_SERIALIZERS = {
     #"USER_DETAILS_SERIALIZER": "api.serializers.CustomUserDetailsSerializer",
