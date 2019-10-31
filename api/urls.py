@@ -15,15 +15,18 @@ urlpatterns = [
   path('attend/', attend), # FOR ATTENDANCE
   path('getstats/',getstats), # FOR GETTING STATS
   path('getProjects/',ProjectView.as_view()), # GET PROJECTS 
-  path('users/', CustomRegisterView.as_view(),name="something"),  #DJANGO USER
-  path('rest-auth/', include('rest_auth.urls')), # ALL REST AUTH URLS
-  url(r'rest-auth/registration/account-confirm-email/(?P<key>[-:\w]+)/$', ConfirmEmailView.as_view(),name='account_confirm_email'),
-  path('rest-auth/registration/', include('rest_auth.registration.urls')), #REST USER
-  path('api-token-auth/', obtain_auth_token, name='api_token_auth'),  # <-- And here
-  path('events/', ListEventsView.as_view(), name='getevents'),  # <-- And here
+   path('events/', ListEventsView.as_view(), name='getevents'),  # <-- And here
   path('news/', ListNewsView.as_view(), name='getnews'),  # <-- And here
-  url(r'^login/$', LoginUserDetailView.as_view(), name='rest_login'),
-  url(r'^custom/login/$', CustomLoginView.as_view(), name='rest_login'),
-  url(r'^custom/register/$', VeryNewCustomRegisterView.as_view(), name='rest_register'),
-  path(r'^*account-confirm-email/(?P<key>[-:\w]+)/$', TemplateView.as_view(), name='account_confirm_email'),  # <-- And here
+  #path('users/', CustomRegisterView.as_view(),name="something"),  #DJANGO USER
+  path('rest-auth/', include('rest_auth.urls')), # ALL REST AUTH URLS
+
+
+  #url(r'rest-auth/registration/account-confirm-email/(?P<key>[-:\w]+)/$', ConfirmEmailView.as_view(),name='account_confirm_email'),
+  #path('rest-auth/registration/', include('rest_auth.registration.urls')), #REST USER
+  #path('api-token-auth/', obtain_auth_token, name='api_token_auth'),  # <-- And here
+ 
+  # just token - url(r'^login/$', LoginUserDetailView.as_view(), name='rest_login'),
+  
+ #REDUNDANT url(r'^custom/register/$', VeryNewCustomRegisterView.as_view(), name='rest_register'),
+ # path(r'^*account-confirm-email/(?P<key>[-:\w]+)/$', TemplateView.as_view(), name='account_confirm_email'),  # <-- And here
   ]
