@@ -1,0 +1,19 @@
+
+{% block content %}
+{% if user.is_authenticated %}
+<h1>Welcome Buddy</h1>
+<p>{{ user.username }}</p>
+<a href="{% url 'visioneer' %}">apply</a>
+
+
+
+
+
+
+{% else %}
+<p>Login to continue<p>
+
+
+{% endif %}
+
+{% endblock %}

@@ -156,6 +156,10 @@ AUTHENTICATION_BACKENDS = (
 )
 
 
+#STATIC_URL = 'Cia-DJ/static/'
+#STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_EMAIL_REQUIRED = True   
 ACCOUNT_USERNAME_REQUIRED = False
@@ -204,3 +208,6 @@ EMAIL_HOST_USER = 'communities.atria@gmail.com'
 EMAIL_HOST_PASSWORD = 'berylliumguacamoleb'
 EMAIL_PORT = 587
 DEFAULT_FROM_EMAIL  = 'communities.atria@gmail.com'
+
+
+LOGIN_REDIRECT_URL = '/'

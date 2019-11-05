@@ -30,6 +30,10 @@ class UserSerializer(ModelSerializer):
         user.save()
         return user
 
+class visioneerSerializer(ModelSerializer):
+    class Meta:
+        fields='__all__'
+
 class UserSerializer2(ModelSerializer):
     password = serializers.CharField(write_only=True)
     class Meta:

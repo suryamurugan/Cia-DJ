@@ -132,3 +132,25 @@ class EmailOrUsernameModelBackend(object):
             return get_user_model().objects.get(pk=username)
         except get_user_model().DoesNotExist:
             return None
+
+
+class Visioneer(models.Model):
+    firstname = models.CharField(max_length=100, null=False, default='firstname')
+    lastname = models.CharField(max_length=100, null=False, default='lastname')
+    emailaddress = models.EmailField(max_length=100, null=False, default='emailaddress',unique=True)
+    password = models.CharField(max_length=100, null=False, default='password')
+    passwordhashfunction = models.CharField(max_length=100, null=False, default='title')
+    orgunitpath = models.CharField(max_length=100, null=False, default='title')
+    recoveryemail = models.EmailField(max_length=100, null=False, default='title')
+    rphone = models.CharField(max_length=13, null=False, default='title')
+    homeaddress = models.CharField(max_length=100, null=False, default='title')
+    employeeid = models.CharField(max_length=100, null=False, default='title')
+    departement = models.CharField(max_length=100, null=False, default='title')
+    
+
+    
+
+    
+
+
+

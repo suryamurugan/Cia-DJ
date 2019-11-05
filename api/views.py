@@ -31,18 +31,110 @@ from allauth.account import app_settings as allauth_settings
 from allauth.account.utils import complete_signup
 from rest_auth.views import LoginView,PasswordResetView
 from rest_auth.registration.views import RegisterView
+import requests
+import json
+from django.contrib.auth import get_user_model
+
+from django.contrib.auth import authenticate,login
+from django.contrib.auth.forms import UserCreationForm
+
 
 from rest_auth.app_settings import (
     TokenSerializer,  UserDetailsSerializer, JWTSerializer, create_token
 )
 from rest_auth.utils import jwt_encode
+from .models import User,Visioneer
+from django.views.generic.edit import CreateView, DeleteView, UpdateView
+
 
 
 from cia import settings
 from django.core.mail import EmailMessage
 
+from .forms import UserSignUpForm,VisioneerForm
 
 
+def visioneerview(request):
+    if request.method == 'POST':
+        form = VisioneerForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('index')
+    else:
+        form = VisioneerForm()
+    context = {"form":form}
+    return render(request,'visioneer.html',context)
+
+
+class VisioneerCreate(CreateView):
+    model = Visioneer
+    fields='__all__'
+
+def profile(request):
+    return render(request,'registration/profile.html')
+
+
+def register(request):
+    
+    if request.method == 'POST':
+        form = UserSignUpForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data['username']
+            password= form.cleaned_data['password1']
+            user =authenticate(username=form.username,password=password)
+            login(request,user)
+            return redirect('index')
+
+    else:
+        form = UserCreationForm()
+    context = {"form":form}
+    return render(request,'registration/register.html',context)
+
+        
+
+def loginPage(request):
+    if request.method == 'POST':
+        print("POST")
+        print(request)
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        d={}
+        d['email']=email
+        d['password']=password
+        r = requests.post(url = 'http://139.59.61.35:8000/login/', data = d)
+        data = json.dumps(r.content)
+        print(data)
+    
+
+        
+    else :
+        return render(request, 'loginPage.html')
+
+
+def index(request):
+    """View function for home page of site."""
+    '''
+    # Generate counts of some of the main objects
+    num_books = Book.objects.all().count()
+    num_instances = BookInstance.objects.all().count()
+    
+    # Available books (status = 'a')
+    num_instances_available = BookInstance.objects.filter(status__exact='a').count()
+    
+    # The 'all()' is implied by default.    
+    num_authors = Author.objects.count()
+    
+    context = {
+        'num_books': num_books,
+        'num_instances': num_instances,
+        'num_instances_available': num_instances_available,
+        'num_authors': num_authors,
+    }'''
+
+    # Render the HTML template index.html with the data in the context variable
+    #return render(request, 'index.html', context=context)
+    return render(request, 'index.html')
 
 #from rest_framework import serializers
 
