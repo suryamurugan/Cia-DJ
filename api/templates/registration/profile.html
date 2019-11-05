@@ -1,14 +1,24 @@
 
+{% extends "base.html" %}
+
 {% block content %}
 {% if user.is_authenticated %}
-<h1>Welcome Buddy</h1>
-<p>{{ user.username }}</p>
-<a href="{% url 'visioneer' %}">apply</a>
+<div class="jumbotron">
+      
+      
+</div>
+<div class="text-center">
+        <h1>Welcome {{ user.username }}</h1>
+        <div class="container">
+                <a href="{% url 'visioneer' %}"><h4 style="color: green">APPLY FOR A VISIONEER EMAIL-ID</h4></a>
+
+        </div>
+        
 
 
-
-
-
+        
+        
+</div>
 
 {% else %}
 <p>Login to continue<p>

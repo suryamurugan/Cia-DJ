@@ -17,4 +17,4 @@ class ResetCustomForm(forms.ModelForm):
 class VisioneerForm(forms.ModelForm):
     class Meta:
         model=Visioneer
-        fields = '__all__'
+        fields = ['firstname','lastname','visioneerEmailAddress','password','recoveryemail','recoveryphone','homeaddress','employeeid']

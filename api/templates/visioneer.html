@@ -1,24 +1,241 @@
-{% if user.is_authenticated %}
-<!DOCTYPE html>
+{% load staticfiles %}
+<!doctype html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Visioneer Application</title>
-    
+
+  <!--====== Required meta tags ======-->
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!--====== Title ======-->
+  <title>CIA</title>
+  {% load static %}
+
+  <!--====== Favicon Icon ======-->
+  <link rel="shortcut icon" href="{% static 'assets/images/favicon.png' %}" type="image/png">
+
+  <!--====== Bootstrap css ======-->
+  <!-- <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css'%}"> -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+
+
+
+  <!--====== Line Icons css ======-->
+  <link rel="stylesheet" href="{% static 'assets/css/LineIcons.css'%}">
+  <!-- <link rel="stylesheet" href="https://cdn.lineicons.com/1.0.1/LineIcons.min.css"> -->
+  <link href='https://cdn.lineicons.com/1.0.1/LineIcons.min.css' rel='stylesheet'>
+
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/GrayGrids/LineIcons/LineIcons.css"> -->
+
+  <!--====== Magnific Popup css ======-->
+  <!-- <link rel="stylesheet" href="{% static 'assets/css/magnific-popup.css'%}">  -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.css"
+    integrity="sha256-RdH19s+RN0bEXdaXsajztxnALYs/Z43H/Cdm1U4ar24=" crossorigin="anonymous" />
+
+  <!--====== Slick css ======-->
+  <!-- <link rel="stylesheet" href="{% static 'assets/css/slick.css'%}"> -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css"
+    integrity="sha256-3h45mwconzsKjTUULjY+EoEkoRhXcOIU4l5YAw2tSOU=" crossorigin="anonymous" />
+
+  <!--====== Animate css ======-->
+  <!-- <link rel="stylesheet" href="{% static 'assets/css/animate.css'%}">  -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.css"
+    integrity="sha256-a2tobsqlbgLsWs7ZVUGgP5IvWZsx8bTNQpzsqCSm5mk=" crossorigin="anonymous" />
+
+  <!--====== Default css ======-->
+  <link rel="stylesheet" href="{% static 'assets/css/default.css'%}">
+
+  <!--====== Style css ======-->
+  <link rel="stylesheet" href="{% static 'assets/css/style.css'%}">
+
+
 </head>
+
 <body>
-<h2>Visioneer Application</h2>
 
-<form action="{% url 'visioneer'%}" method="post">
-    {% csrf_token %}
-    <table>
-    {{form.as_ul}}
+  {% load crispy_forms_tags %}
 
- </table>
-<input type="submit" value="Submit" />
-</form>
+
+  <div class="container">
+    <div class="py-5 text-center">
+      {% load static %}
+      <!--  <img class="d-block mx-auto mb-4" src="{% static 'assets/brand/bootstrap-solid.svg' %}" alt="" width="72"
+      height="72"> -->
+      <h2>Visioneer Mail - Registration Form</h2>
+      <p class="lead">You're a form away from getting something wonderful!</p>
+    </div>
+
+
+
+
+
+    <div class="col-md-8order-md-1">
+
+      <form method="post" action="{% url 'visioneer'%}" novalidate>
+        {% csrf_token %}
+        <div class="form-row">
+          <div class="col-md-4 mb-3">
+            {{ form.firstname|as_crispy_field }}
+          </div>
+          <div class="col-md-4 mb-3">
+            {{ form.lastname|as_crispy_field }}
+          </div>
+          <div class="col-md-4 mb-3">
+            {{ form.employeeid|as_crispy_field }}
+          </div>
+
+        </div>
+
+
+
+
+        <div class="row">
+          <div class="col-md-4   mb-3">
+            <!-- <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroupPrepend2">@</span>
+            </div> -->
+            {{ form.visioneerEmailAddress|as_crispy_field }}
+
+
+          </div>
+
+
+
+          <div class="col-md-5 mb-3">
+
+            
+            <div id="div_id_recoveryemail" class="form-group">
+
+              <label for="id_recoveryemail" class=" requiredField">
+                Recovery Email<span class="asteriskField">*</span>
+              </label>
+
+
+
+
+
+
+
+
+              <div class="">
+                <input type="email" name="recoveryemail" maxlength="100" class="emailinput form-control" required
+                  id="id_recoveryemail"  value="{{ user.email }}"disabled/>
+
+
+
+
+
+
+
+
+
+
+
+
+              </div>
+
+
+            </div>
+
+        
+
+          </div>
+
+          <div class="col-md-3 mb-3">
+
+            {{ form.recoveryphone|as_crispy_field }}
+
+          </div>
+
+        </div>
+
+        <div class="mb-3">
+
+          {{ form.homeaddress|as_crispy_field }}
+
+        </div>
+
+        <div class="col mb-3">
+
+          {{ form.password|as_crispy_field }}
+        </div>
+
+        <button class="btn btn-primary" type="submit">Submit form</button>
+
+      </form>
+
+    </div>
+    <div class="container">
+      <h1>.</h1>
+
+    </div>
+
+
+
+
+  </div>
+
+
+
+
+  <!--====== jquery js ======-->
+  <!-- <script src="{%static 'assets/js/vendor/modernizr-3.6.0.min.js'%}"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"
+    integrity="sha256-ffw+9zwShMev88XNrDgS0hLIuJkDfXhgyLogod77mn8=" crossorigin="anonymous"></script>
+  <!-- <script src="{%static 'assets/js/vendor/jquery-1.12.4.min.js'%}"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+  <!--====== Bo{%static 'otstrap js ======-->
+  <!--  <script src="{%static 'assets/js/bootstrap.min.js'%}"></script>
+    <script src="{%static 'assets/js/popper.min.js'%}"></script> -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+
+  <!--====== Sl{%static 'ick js ======-->
+  <!-- <script src="{%static 'assets/js/slick.min.js'%}"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+
+  <!--====== Is{%static 'otope js ======-->
+  <!-- <script src="{%static 'assets/js/isotope.pkgd.min.js'%}"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js"
+    integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+
+  <!--====== Im{%static 'ages Loaded js ======-->
+  <!-- <script src="{%static 'assets/js/imagesloaded.pkgd.min.js'%}"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js"
+    integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+  <!--====== Ma{%static 'gnific Popup js ======-->
+  <script src="{%static 'assets/js/jquery.magnific-popup.min.js'%}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"
+    integrity="sha256-P93G0oq6PBPWTP1IR8Mz/0jHHUpaWL0aBJTKauisG7Q=" crossorigin="anonymous"></script>
+  <!--====== Sc{%static 'rolling js ======-->
+  <!-- <script src="{%static 'assets/js/scrolling-nav.js'%}"></script>
+    <script src="{%static 'assets/js/jquery.easing.min.js'%}"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-one-page-nav/3.0.0/jquery.nav.min.js"></script>
+
+  <!--====== wo{%static 'w js ======-->
+  <script src="{%static 'assets/js/wow.min.js'%}"></script>
+
+  <!--====== Ma{%static 'in js ======-->
+  <script src="{%static 'assets/js/main.js'%}"></script>
+
 </body>
+
 </html>
-{% else %}
-<h1>Login Please</h1>
-{% endif%}

@@ -52,12 +52,22 @@ from cia import settings
 from django.core.mail import EmailMessage
 
 from .forms import UserSignUpForm,VisioneerForm
+from django.contrib.auth.decorators import login_required
 
 
+@login_required
 def visioneerview(request):
     if request.method == 'POST':
+        print("VISIONEER")
+        
+        #d = dict(request.POST)
+        print(request.POST)
+        #d['passwordhashfunction'] = 'MD5'
+        #d['orgunitpath'] = 'uk'
+        #d['orgunitpath'] = 'uk'
         form = VisioneerForm(request.POST)
         if form.is_valid():
+            print("Correct")
             form.save()
             return redirect('index')
     else:
@@ -70,6 +80,7 @@ class VisioneerCreate(CreateView):
     model = Visioneer
     fields='__all__'
 
+@login_required
 def profile(request):
     return render(request,'registration/profile.html')
 

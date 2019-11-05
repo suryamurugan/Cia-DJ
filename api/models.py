@@ -3,6 +3,8 @@ from django.contrib.auth.models import AbstractUser
 from phonenumber_field.modelfields import PhoneNumberField
 from django.contrib.auth import get_user_model
 from django.conf import settings
+from phone_field import PhoneField
+
 
 
 
@@ -135,16 +137,16 @@ class EmailOrUsernameModelBackend(object):
 
 
 class Visioneer(models.Model):
-    firstname = models.CharField(max_length=100, null=False, default='firstname')
-    lastname = models.CharField(max_length=100, null=False, default='lastname')
-    emailaddress = models.EmailField(max_length=100, null=False, default='emailaddress',unique=True)
-    password = models.CharField(max_length=100, null=False, default='password')
-    passwordhashfunction = models.CharField(max_length=100, null=False, default='title')
-    orgunitpath = models.CharField(max_length=100, null=False, default='title')
-    recoveryemail = models.EmailField(max_length=100, null=False, default='title')
-    rphone = models.CharField(max_length=13, null=False, default='title')
-    homeaddress = models.CharField(max_length=100, null=False, default='title')
-    employeeid = models.CharField(max_length=100, null=False, default='title')
+    firstname = models.CharField('First Name',max_length=100, null=False)
+    lastname = models.CharField('Last Name',max_length=100, null=False)
+    visioneerEmailAddress = models.EmailField('username@visioneer.atria.edu',max_length=100, null=False,unique=True)
+    password = models.CharField('Password',max_length=100, null=False)
+    passwordhashfunction = models.CharField(max_length=100, null=False, default='MD%')
+    orgunitpath = models.CharField(max_length=100, null=False, default='org')
+    recoveryemail = models.EmailField('Recovery Email',max_length=100, null=False)
+    recoveryphone = PhoneField('Phone Number',blank=True,)
+    homeaddress = models.CharField('Primary Address',max_length=100, null=False)
+    employeeid = models.CharField('USN',max_length=100, null=False)
     departement = models.CharField(max_length=100, null=False, default='title')
     
 

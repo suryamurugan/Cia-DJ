@@ -49,13 +49,15 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',  # <-- Here
     'rest_auth',
-    
+    'widget_tweaks',
+    'crispy_forms',
+    'phone_field',
 ]
 
 SITE_ID = 1
 AUTH_USER_MODEL = 'api.User'
-
-
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+PHONENUMBER_DB_FORMAT = 'E164'
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -156,8 +158,8 @@ AUTHENTICATION_BACKENDS = (
 )
 
 
-#STATIC_URL = 'Cia-DJ/static/'
-#STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
