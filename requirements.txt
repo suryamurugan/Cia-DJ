@@ -14,7 +14,7 @@ django-phonenumber-field==2.4.0
 django-rest-auth==0.9.5
 django-rest-passwordreset==1.0.0
 django-widget-tweaks==1.4.5
-djangorestframework==3.8.2
+djangorestframework==3.9.1
 gunicorn==19.8.1
 idna==2.8
 numpy==1.14.3
