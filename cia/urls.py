@@ -42,19 +42,16 @@ urlpatterns = [
     path('register/',register,name="register"),
     path('profile/',profile,name='profile'),
     path('visioneer/', visioneerview, name='visioneer'),
+    
+    
+    re_path('api/(?P<version>(v1|v2))/', include('api.urls')),    
 
     #FOR MOBILE REST API's
     url(r'rest/register/$', VeryNewCustomRegisterView.as_view(), name='rest_register'),
     url(r'^rest/login/$', CustomLoginView.as_view(), name='main_login'),
-    re_path('api/(?P<version>(v1|v2))/', include('api.urls')),    
     url(r'rest/reset/confirm/(?P<uidb64>[0-9A-Za-z]+)-(?P<token>.+)/$', password_reset_confirm, name='password_reset_confirm'), # POST RESET MAIL 
     url(r'rest/reset/confirm/done/$', password_reset_complete, name='password_reset_complete'),
     path('activate/<uid>/<token>/',something),     # ACTIVATEING ACCOUNT - LINK MAILED 
-
-    
-    
-
-
 ]
 # + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

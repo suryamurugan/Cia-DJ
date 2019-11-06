@@ -7,7 +7,8 @@ from django.conf.urls import url
 from django.views.generic import TemplateView
 
 from rest_auth.registration.views import RegisterView, VerifyEmailView, ConfirmEmailView
-from django.contrib.auth.views import password_reset_confirm
+from .views import something
+from django.contrib.auth.views import password_reset_confirm,password_reset_complete
 
 
 
@@ -18,4 +19,5 @@ urlpatterns = [
    path('events/', ListEventsView.as_view(), name='getevents'),  # <-- And here
   path('news/', ListNewsView.as_view(), name='getnews'),  # <-- And here
   path('rest-auth/', include('rest_auth.urls')), # ALL REST AUTH URLS
+  
   ]

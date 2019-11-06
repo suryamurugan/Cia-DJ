@@ -25,7 +25,7 @@ SECRET_KEY = '#s6=@c-7v412-p6nxp17a@p^%rau--v=t&vd!7dh(sl&f4a4p%'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['139.59.61.35']
+ALLOWED_HOSTS = ['139.59.61.35','cia.atria.edu']
 
 
 # Application definition
@@ -213,3 +213,5 @@ DEFAULT_FROM_EMAIL  = 'communities.atria@gmail.com'
 
 
 LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
+

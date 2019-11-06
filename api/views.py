@@ -98,7 +98,7 @@ def register(request):
             return redirect('index')
 
     else:
-        form = UserCreationForm()
+        form = UserSignUpForm()
     context = {"form":form}
     return render(request,'registration/register.html',context)
 

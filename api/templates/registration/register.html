@@ -1,13 +1,84 @@
 
 
-<html>
+{% load staticfiles %}
+<!doctype html>
+<html lang="en">
+
+<head>
+
+  <!--====== Required meta tags ======-->
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!--====== Title ======-->
+  <title>CIA</title>
+  {% load static %}
+
+  <!--====== Favicon Icon ======-->
+  <link rel="shortcut icon" href="{% static 'assets/images/favicon.png' %}" type="image/png">
+
+  <!--====== Bootstrap css ======-->
+  <!-- <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css'%}"> -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+
+
+
+  <!--====== Line Icons css ======-->
+  <link rel="stylesheet" href="{% static 'assets/css/LineIcons.css'%}">
+  <!-- <link rel="stylesheet" href="https://cdn.lineicons.com/1.0.1/LineIcons.min.css"> -->
+  <link href='https://cdn.lineicons.com/1.0.1/LineIcons.min.css' rel='stylesheet'>
+
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/GrayGrids/LineIcons/LineIcons.css"> -->
+
+  <!--====== Magnific Popup css ======-->
+  <!-- <link rel="stylesheet" href="{% static 'assets/css/magnific-popup.css'%}">  -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.css"
+    integrity="sha256-RdH19s+RN0bEXdaXsajztxnALYs/Z43H/Cdm1U4ar24=" crossorigin="anonymous" />
+
+  <!--====== Slick css ======-->
+  <!-- <link rel="stylesheet" href="{% static 'assets/css/slick.css'%}"> -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css"
+    integrity="sha256-3h45mwconzsKjTUULjY+EoEkoRhXcOIU4l5YAw2tSOU=" crossorigin="anonymous" />
+
+  <!--====== Animate css ======-->
+  <!-- <link rel="stylesheet" href="{% static 'assets/css/animate.css'%}">  -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.css"
+    integrity="sha256-a2tobsqlbgLsWs7ZVUGgP5IvWZsx8bTNQpzsqCSm5mk=" crossorigin="anonymous" />
+
+  <!--====== Default css ======-->
+  <link rel="stylesheet" href="{% static 'assets/css/default.css'%}">
+
+  <!--====== Style css ======-->
+  <link rel="stylesheet" href="{% static 'assets/css/style.css'%}">
+
+
+</head>
+
 
     <body>  <div class="row">
+        {% load crispy_forms_tags %}
+
+        <div class="container">
+            <div class="py-5 text-center">
+              {% load static %}
+              <!--  <img class="d-block mx-auto mb-4" src="{% static 'assets/brand/bootstrap-solid.svg' %}" alt="" width="72"
+              height="72"> -->
+              <h2>CIA USER REGISTERATION</h2>
+              <p class="lead">You're a form away from getting something wonderful!</p>
+            </div>
+
        <form method="POST" action="{% url 'register' %}">
          {%csrf_token%}
          <p>{% if form.errors%}</p>
          {% endif %}
-         {{ form }}
+         {{ form.as_p }}
+
          <input type="submit" value="Register"> 
        </form>
     </body>
