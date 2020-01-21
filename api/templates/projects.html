@@ -1,0 +1,86 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap" rel="stylesheet">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'assets/css/projects.css'%}">
+    
+    <title>projects</title>
+</head>
+
+<body>
+    <div class="bottom-nav">
+        <h3><a href="{% url 'index' %}">Home</a></h3>
+        <h3><a href="{% url 'index' %}">About</a></h3>
+        <h3><a href="{% url 'events' %}">Events</a></h3>
+        <h3 class="selected-tab"><a href="{% url 'projects' %}">Projects</a></h3class="selected-tab">
+    </div>
+    <section class="projects">
+        <div class="left-project">
+            <h1 class="projects-title">
+                Projects
+            </h1>
+            <div class="left-project-child">
+
+                <div class="left-project-child-right">
+                    <div class="project-img">
+                        <img src="https://i.gadgets360cdn.com/large/google_project_-reuters_full_1571202283482.JPG"
+                            alt="">
+                    </div>
+                    <div class="about-project">
+                        <h1>
+                            Test project
+                        </h1>
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam reiciendis cum corrupti
+                            velit voluptate assumenda inventore laborum fuga, placeat, dicta harum nostrum nam ipsam
+                            exercitationem, alias perspiciatis facilis distinctio hic.
+                            <br><br>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam reiciendis cum corrupti
+                            velit voluptate assumenda inventore laborum fuga, placeat, dicta harum nostrum nam ipsam
+                            exercitationem, alias perspiciatis facilis distinctio hic.
+                            <br><br>
+                            register: <a href="">something.com</a>
+                        </p>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="right-project">
+            <h1>All Projects</h1>
+            <div class="project-gradient">
+
+            </div>
+            <ul class="project-list">
+
+                <li>
+                    <div class="project-img">
+                        <img src="https://i.gadgets360cdn.com/large/google_project_-reuters_full_1571202283482.JPG"
+                            alt="">
+                    </div>
+                    <div class="about-project-right">
+                        <h1>
+                            Test project
+                        </h1>
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, odio.
+                        </p>
+                    </div>
+                </li>
+
+                
+
+            </ul>
+        </div>
+    </section>
+</body>
+
+</html>

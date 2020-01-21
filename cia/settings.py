@@ -24,17 +24,17 @@ SECRET_KEY = '#s6=@c-7v412-p6nxp17a@p^%rau--v=t&vd!7dh(sl&f4a4p%'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 #DEBUG = True
-DEBUG = False
+DEBUG = True
 #SECURE_SSL_REDIRECT = True
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = False
+CSRF_COOKIE_SECURE = False
 SECURE_BROWSER_XSS_FILTER = True
 SECURE_BROWSER_XSS_FILTER = True
 SECURE_CONTENT_TYPE_NOSNIFF = True
 
 
-ALLOWED_HOSTS = ['167.71.239.64','cia.atria.edu']
-
+#ALLOWED_HOSTS = ['167.71.238.192','cia.atria.edu','test.ciadev.ninja','iot.atria.edu']
+ALLOWED_HOSTS = ['test.ciadev.ninja','sufibox']
 
 # Application definition
 
@@ -116,8 +116,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'cia',
-        'USER': 'jarvis',
-        'PASSWORD': 'cia_1234',
+        'USER': 'cia',
+        'PASSWORD': 'ciafriday',
         'HOST': 'localhost',
         'PORT': '',
     }

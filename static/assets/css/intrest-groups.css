@@ -1,0 +1,482 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Josefin Sans', sans-serif;
+    color: var(--texttheme);
+}
+
+body {
+    --bgtheme: #151519;
+    --texttheme: rgb(238, 238, 238);
+    --green-accent: #28CA9B;
+    --nav-width: auto;
+    height: auto;
+    background: var(--bgtheme);
+    transition: background .5s;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+a {
+    color: var(--green-accent);
+}
+
+/* UNIVERSAL */
+
+main {
+    width: 100%;
+    height: 100vh;
+
+    display: grid;
+    grid-template-columns: var(--nav-width) 2fr .6fr;
+}
+
+.nav-section,
+.details {
+    background: #151519;
+
+}
+
+.main-page {
+    background: #111113;
+}
+
+.selected-group {
+    background: rgb(30, 30, 35);
+}
+
+.selected-group>h3 {
+    color: var(--green-accent);
+}
+
+@media only screen and (min-width: 600px) {
+
+    /* INTRO ANIMSATIONS */
+    @keyframes widthanim {
+
+        0%,
+        50% {
+            width: 45vh;
+        }
+
+        100% {
+            width: 8vw;
+        }
+    }
+
+    @keyframes titleanim {
+
+        0%,
+        50% {
+            font-size: 1.5rem;
+            margin: 20px;
+
+        }
+
+        100% {
+            font-size: 1rem;
+        }
+    }
+
+    @keyframes titleanim2 {
+
+        0%,
+        50% {
+            position: relative;
+            opacity: 1;
+            margin-left: 10px;
+            font-size: 1rem;
+            font-weight: 100;
+        }
+
+        100% {
+            opacity: 0;
+            font-size: 0;
+            position: absolute;
+        }
+    }
+
+    @keyframes listanim {
+
+        0%,
+        50% {
+            padding-left: 20px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: left;
+            height: 50px;
+        }
+
+        100% {
+            height: 12vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+    }
+
+    @keyframes logoanim {
+
+        0%,
+        50% {
+            width: 35px;
+            height: 35px;
+            background: rgb(225, 225, 225);
+            border-radius: 40px;
+            overflow: hidden;
+        }
+
+        100% {
+            --radius: 45px;
+            width: var(--radius);
+            height: var(--radius);
+            border-radius: var(--radius);
+            background: gray;
+        }
+
+        /* ....................... */
+    }
+
+    .nav-section:hover {
+        width: 45vh;
+    }
+
+    .nav-section:hover header>h1 {
+        font-size: 1.5rem;
+        margin: 20px;
+    }
+
+    .nav-section:hover ul {
+        list-style: none;
+        margin-top: 40px;
+    }
+
+    .nav-section:hover ul li {
+
+        padding-left: 20px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        margin-top: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: left;
+        height: 50px;
+    }
+
+    .nav-section:hover ul li h3 {
+        position: relative;
+        opacity: 1;
+        margin-left: 10px;
+        font-size: 1rem;
+        font-weight: 100;
+    }
+
+    .nav-section:hover .logo {
+        width: 35px;
+        height: 35px;
+        background: rgb(225, 225, 225);
+        border-radius: 40px;
+        overflow: hidden;
+    }
+
+    .nav-section {
+        width: 8vw;
+        animation: widthanim 2s;
+        transition: all 400ms ease-out;
+    }
+
+
+
+    .nav-section>header h1 {
+        margin: 15%;
+
+        color: var(--green-accent);
+        font-size: 1rem;
+        animation: titleanim 2s;
+        transition: all 400ms;
+    }
+
+    .nav-section ul li h3 {
+        opacity: 0;
+        font-size: 0;
+        position: absolute;
+        animation: titleanim2 2s;
+        transition: opacity 500ms, font-size 100ms;
+    }
+
+    .nav-section ul {
+        transition: all 200ms;
+    }
+
+    .nav-section ul li {
+        height: 12vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        animation: listanim 2s;
+        transition: all 500ms;
+    }
+
+    .nav-section .logo {
+        --radius: 45px;
+        width: var(--radius);
+        height: var(--radius);
+        border-radius: var(--radius);
+        background: gray;
+        transition: all .5s ease-out;
+    }
+
+    .logo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+
+}
+
+
+/* MAINPAGE CSS */
+.main-page {
+    overflow-y: scroll;
+    padding: 25px;
+}
+
+.main-page .heading {
+    width: 100%;
+    height: 20%;
+    display: flex;
+    align-items: center;
+    /* background: orange; */
+    margin: 20px;
+    margin-bottom: 10px;
+    margin-top: 0;
+
+}
+
+.main-page .heading h3 {
+    font-size: 2.5rem;
+    margin-left: 10px;
+}
+
+.main-page .heading .logo {
+    width: 80px;
+    height: 80px;
+    border-radius: 100px;
+    background: rgb(220, 220, 220);
+}
+
+.about-group {
+    position: relative;
+    margin-left: 25px;
+    margin-right: 25px;
+    height: 40vh;
+}
+
+.bg-img {
+    width: 100%;
+    height: auto;
+    background: black;
+    border-radius: 10px;
+}
+
+/* Details Section */
+.details {
+    padding: 10%;
+
+}
+
+.details a {
+    text-decoration: none;
+    color: var(--texttheme);
+
+}
+
+.details a:hover {
+    text-decoration: underline;
+}
+
+.list-holder {
+    margin-top: 10px;
+    position: relative;
+    height: 50vh;
+}
+
+.members {
+
+    list-style: none;
+    height: 100%;
+    overflow-y: scroll;
+}
+
+.members li {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.members li h5 {
+    margin-left: 10px;
+}
+
+.members .profile-img {
+    width: 30px;
+    height: 30px;
+    border-radius: 30px;
+    background: black;
+}
+
+.profile-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.details .cover {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 30%;
+    background: linear-gradient(to top, #151519, transparent);
+    pointer-events: none;
+}
+
+.contact-info a {
+    color: var(--green-accent);
+    text-decoration: underline;
+}
+
+.contact-info {
+    margin-top: 30px;
+    height: auto;
+}
+
+.main-contact {
+    margin-top: 15px;
+}
+
+.group-link {
+    margin-top: 10px;
+}
+
+
+
+@media only screen and (max-width: 600px) {
+    main {
+        display: grid;
+        grid-template-columns: 1fr;
+        /* grid-template-rows: 70vh 15vh 15vh; */
+        grid-template-rows: auto auto auto;
+
+    }
+
+    .main-page .heading {
+        width: 100%;
+        height: 20%;
+        display: flex;
+        align-items: center;
+
+        margin: 20px;
+        margin-bottom: 10px;
+        margin-top: 0;
+
+    }
+
+    .main-page .heading h3 {
+        font-size: 2.5rem;
+        width: 60%;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    .main-page .heading .logo {
+        width: 80px;
+        height: 80px;
+        border-radius: 100px;
+        background: rgb(220, 220, 220);
+    }
+
+    .main-page {
+        grid-row: 1/2;
+        height: 100vh;
+        overflow-y: auto;
+
+    }
+
+    .nav-section {
+        width: 100%;
+        grid-row: 3/4;
+    }
+
+    .nav-section header>h1 {
+        font-size: 1.5rem;
+        margin: 20px;
+        padding-left: 30px;
+    }
+
+    .nav-section ul {
+        list-style: none;
+        /* margin-top: 40px; */
+    }
+
+    .nav-section ul li {
+
+        padding-left: 50px;
+        /* padding-top: 10px; */
+        /* padding-bottom: 10px; */
+        margin-top: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: left;
+        height: 50px;
+    }
+
+    .nav-section ul li h3 {
+        position: relative;
+        opacity: 1;
+        margin-left: 10px;
+        font-size: 1rem;
+        font-weight: 100;
+    }
+
+    .nav-section .logo {
+        width: 35px;
+        height: 35px;
+        background: rgb(225, 225, 225);
+        border-radius: 40px;
+        overflow: hidden;
+    }
+
+    .members,
+    .details>h4,
+    .list-holder {
+        display: none;
+    }
+
+    .details {
+        height: 100%;
+        padding: 10px;
+        padding-left: 50px;
+    }
+
+    .contact-info {
+        margin-top: 5px;
+    }
+
+    .main-contact {
+        margin-top: 5px;
+    }
+
+    .nav-section {}
+}
