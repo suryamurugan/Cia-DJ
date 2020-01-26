@@ -53,6 +53,39 @@ from django.core.mail import EmailMessage
 
 from .forms import UserSignUpForm,VisioneerForm
 from django.contrib.auth.decorators import login_required
+from django.http import JsonResponse
+
+
+
+#json
+def getjsonmodel(request):
+    data = {
+        'name': 'Vitor',
+        'location': 'Finland',
+        'is_active': True,
+        'count': 28
+    }
+    data = open('cia/data.json').read()
+    
+    jsonData = json.loads(data) 
+    
+
+    return JsonResponse(jsonData,safe=False)
+
+#json
+def getjsonmodel2(request):
+    data = {
+        'name': 'Vitor',
+        'location': 'Finland',
+        'is_active': True,
+        'count': 28
+    }
+    data = open('cia/data2.json').read()
+    
+    jsonData = json.loads(data) 
+    
+
+    return JsonResponse(jsonData,safe=False)
 
 
 @login_required
