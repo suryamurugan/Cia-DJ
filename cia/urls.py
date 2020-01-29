@@ -38,12 +38,10 @@ urlpatterns = [
 
     #FOR WEB
     path('admin/', admin.site.urls), # ADMIN url
-   #url(r'^$', TemplateView.as_view(template_name="home.html"), name='hom   e'),
     path('accounts/',include('django.contrib.auth.urls')), # TO GET ALL USER URLS
     url(r'^account_inactive/$',TemplateView.as_view(),name = 'account_inactive'), # no idea y but register needs this
     path('',TemplateView.as_view(template_name="mainsite.html"),name="index"),
     path('events/',TemplateView.as_view(template_name="events.html"),name="events"),
-    
     path('projects/',TemplateView.as_view(template_name="projects.html"),name="projects"),
     path('register/',register,name="register"),
     path('profile/',profile,name='profile'),

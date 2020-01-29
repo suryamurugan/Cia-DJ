@@ -103,7 +103,7 @@ class News(models.Model):
 class Project(models.Model):
     p_id = models.AutoField(primary_key=True)
     p_state = models.BooleanField(default=True)
-    p_title = models.CharField(max_length=100, null=False, default='title')
+    p_title = models.CharField(max_length=200, null=False, default='title')
     p_image = models.ImageField(upload_to = 'images/projects/', default = 'projects/no-img.jpg')
     u_id = models.ForeignKey(User,on_delete=models.CASCADE)
     p_datetime = models.DateTimeField(default=datetime.now(), blank=True)
@@ -150,9 +150,13 @@ class Visioneer(models.Model):
     departement = models.CharField(max_length=100, null=False, default='title')
     
 
-    
+class InterestGroup(models.Model):
+    g_name= models.CharField('Group Name',max_length=275, null=False)
+    g_desc= models.CharField('Group Description',max_length=400, null=False)
+    g_img = models.ImageField(upload_to = 'images/group/', default = 'group/no-img.jpg')
+    g_head= models.ForeignKey(User,on_delete=models.CASCADE)
+    g_tellink= models.CharField('Telegram Link',max_length=225, null=False)
+    g_medium=   models.CharField('Medium Link',max_length=225, null=False)
 
     
-
-
 
