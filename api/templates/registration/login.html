@@ -1,3 +1,4 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +6,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="./css/loginAndRegister/login.css">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap" rel="stylesheet">
+
+<!--     <link rel="stylesheet" href="./css/loginAndRegister/login.css"> -->
     <title>join us</title>
 
     <style>
@@ -188,7 +191,7 @@ button {
 
 <body>
     <div class="bg-img">
-        <img src="./assets/img/waves.png" alt="">
+        <img src="{%static 'assets/img/waves.png'%}" alt="">
     </div>
     <main>
         <h1 class="cia-tag">
@@ -199,14 +202,15 @@ button {
             <div class="text-ip">
                 <!-- <input type="username" id="inputEmail" name="username" class="form-control"  {{ form.username }}> -->
 
-                <input required type="username" id="username" name="username" {{ form.username }}>
+                <!-- <input required type="username" id="username" name="username"{{ form.username }}/> -->{{ form.username }}
                 <label for="username"><span>Username</span></label>
             </div>
             <div class="text-ip">
                 <!-- <input type="password" id="inputPassword" name="password" class="form-control"  {{ form.password }}> -->
 
 
-                <input required type="password" id="password" name="password" {{ form.password }}>
+                <!-- <input required type="password" id="password" name="password" /> -->
+                {{ form.password }}
                 <label for="password"><span>Password</span></label>
             </div>
 

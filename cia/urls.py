@@ -20,7 +20,7 @@ from django.urls import path,re_path, include
 from django.conf.urls import url
 
 from allauth.account.views import confirm_email
-from api.views import attend,something,getUser,activate,VeryNewCustomRegisterView,testReset,CustomLoginView,register,profile,VisioneerCreate,visioneerview
+from api.views import attend,something,getUser,activate,VeryNewCustomRegisterView,testReset,CustomLoginView,register,profile,VisioneerCreate,visioneerview,getjsonmodel,getjsonmodel2
 
 from django.views.generic import TemplateView
 from django.contrib.auth.views import password_reset_confirm,password_reset_complete
@@ -32,6 +32,9 @@ from . import settings
 
 
 urlpatterns = [
+
+    path('getjsonmodel/',getjsonmodel,name="getjsonmodel"),
+    path('getjsonmodel2/',getjsonmodel2,name="getjsonmodel2"),
 
     #FOR WEB
     path('admin/', admin.site.urls), # ADMIN url

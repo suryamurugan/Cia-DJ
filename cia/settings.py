@@ -53,7 +53,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'rest_auth.registration',
         'django_rest_passwordreset',
-
+    'corsheaders',
     'rest_framework',
     'rest_framework.authtoken',  # <-- Here
     'rest_auth',
@@ -74,13 +74,18 @@ MIDDLEWARE = [
      'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
+    
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
 ROOT_URLCONF = 'cia.urls'
+
+CORS_ORIGIN_ALLOW_ALL =True
+CORS_ALLOW_CREDENTIALS =True
 
 TEMPLATES = [
     {
