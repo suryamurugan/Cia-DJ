@@ -4,10 +4,10 @@ from rest_framework import generics
 from rest_framework.viewsets import GenericViewSet
 from rest_framework.mixins import CreateModelMixin
 from django.contrib.auth import get_user_model
-from .serializers import UserSerializer,EventsSerializer,NewsSerializer,AttendRegisterSerializer,ProjectSerializer
+from .serializers import UserSerializer,EventsSerializer,NewsSerializer,AttendRegisterSerializer,ProjectSerializer,InterestGroupSerializer
 from rest_framework.permissions import AllowAny
 from rest_auth.registration.views import RegisterView
-from .models import User,Events,News,AttendRegister,Project
+from .models import User,Events,News,AttendRegister,Project,InterestGroup,InterestGroupMember
 from . import serializers
 from rest_framework.decorators import api_view
 from django.http import Http404
@@ -208,6 +208,12 @@ class CustomRegisterView(RegisterView):
         queryset = User.objects.all()
 
 
+class ListInterestGroupView(generics.ListAPIView):
+    """
+    Provides a get method handler.
+    """
+    queryset = InterestGroup.objects.all()
+    serializer_class = InterestGroupSerializer
 
 class ListEventsView(generics.ListAPIView):
     """
@@ -286,6 +292,21 @@ def getstats(request,version):
         except:
             return Response({"response":False})
         return Response({"response":False})
+@api_view(['GET'])
+def getmembers(request,version):
+    try:
+        ig = InterestGroup.objects.get(id=request.GET['id'])
+        members = InterestGroupMember.objects.filter(ig_id=ig)
+
+      #  users = []
+        #print(InterestGroupMemberSerializer(members))
+       # for member in members:
+       #     users.add(member)
+        #print(users)
+        return Response({"response":True, "members":"xsaxa"})
+    except:
+        return Response({"response":False,"id":id})
+
 
 # CUSTOM LOGIN VIEW 
 class LoginUserDetailView(LoginView):

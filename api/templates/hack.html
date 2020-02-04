@@ -1,0 +1,559 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="./css/main.css"> -->
+    <style>
+    :root {
+    --textColor: white;
+    --bgColor: #00010F;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Josefin Sans', sans-serif;
+    color: var(--textColor);
+
+}
+
+body {
+    background: var(--bgColor);
+}
+
+.landing {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+}
+
+.img1,
+.img2 {
+    position: absolute;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.img1 {
+    bottom: 0;
+    left: 0;
+    width: 30vw;
+}
+
+.img2 {
+    top: 0;
+    right: 0;
+    width: 40vw;
+}
+
+.landing-text {
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    line-height: calc(1.5*3rem);
+}
+
+.landing-text h1,
+.landing-text h3 {
+    margin-left: 50px;
+}
+
+#cia-title {
+    font-size: 4rem;
+    color: #64E8B0;
+}
+
+#hackathon {
+    font-size: 4rem;
+}
+
+@media only screen and (max-width: 1000px) {
+    .landing-text {
+        height: 70%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        line-height:30px;
+    }
+
+    .landing-text h1,
+    .landing-text h3 {
+        margin-left: 0px;
+    }
+
+    #cia-title {
+        font-size: 2rem;
+        color: #64E8B0;
+    }
+
+    #hackathon {
+        font-size: 2rem;
+    }
+}
+
+/* John */
+
+
+  .faq-h3 {
+    -moz-transition: all 0.35s ease;
+    -ms-transition: all 0.35s ease;
+    -o-transition: all 0.35s ease;
+    -webkit-transition: all 0.35s ease;
+    background-color: rgba(98, 192, 150, 0.5);
+    border-bottom: 3px solid #40a075;
+    margin: 0;
+    padding: 18px 15px;
+    transition: all 0.35s ease;
+    font-weight: 500;
+  }
+  .faq-h3:hover {
+    background-color: #74c8a3;
+    color: #193e2d;
+    cursor: pointer;
+  }
+  .faq-h3::before {
+    content: "\276f";
+    font-size: 18px!important;
+    float: left;
+    line-height: 30px;
+    margin: 0 15px 0 5px;
+    opacity: 0.5;
+    -moz-transition: all 0.15s ease;
+    -ms-transition: all 0.15s ease;
+    -o-transition: all 0.15s ease;
+    -webkit-transition: all 0.15s ease;
+    transition: all 0.15s ease;
+  }
+  .faq-h3.cerrar {
+    cursor: pointer;
+  }
+  .faq-h3.cerrar::after {
+    content: "\2715";
+    float: right;
+    font-size: 11px;
+    font-weight: 300;
+    line-height: 30px;
+  }
+  .faq-h3.cerrar::before {
+    -moz-transform: rotate(-90deg) !important;
+    -ms-transform: rotate(-90deg) !important;
+    -o-transform: rotate(-90deg) !important;
+    -webkit-transform: rotate(-90deg) !important;
+    transform: rotate(-90deg) !important;
+  }
+  #about-heading {
+    font-size: 2.1em;
+    margin-bottom: 40px;
+    letter-spacing: -1px;
+    padding-bottom: 15px;
+    border-bottom: 1px dotted #74c8a3;
+  }
+  .about {
+    font-size: 21px;
+    font-weight: 400;
+    margin: 0 auto;
+    width: 70%;
+    padding-bottom: 20px;
+  }
+  div {
+    margin: 0;
+  }
+  div:first-child {
+    border: none;
+    margin-top: 45px;
+  }
+
+  .faq-h3:hover::before {
+    opacity: 0.55;
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+    transform: rotate(90deg);
+  }
+  div.respuesta {
+    background: rgba(98, 192, 150, 0.5);
+    margin-bottom: 20px;
+    line-height: 1.8em;
+  }
+  div.respuesta p {
+    font-weight: 400;
+    margin: 0;
+    padding: 25px 50px;
+  }
+  #header {
+    background: #40a075;
+    margin: 20PX 0 20px 0;
+    padding: 30px;
+    text-align: center;
+    overflow: hidden;
+  }
+  #header a {
+    color: #bde5d3;
+    text-decoration: none;
+  }
+  #preguntas {
+    margin: 40px auto 0;
+    padding: 0 5%;
+  }
+  #cerrartodas {
+    background-color: #ed1409;
+    bottom: 30px;
+    color: #ffffff;
+    font-size: 14px;
+    padding: 5px 10px;
+    position: fixed;
+    right: 10%;
+    text-decoration: none;
+    z-index: 1;
+  }
+
+/* previous */
+/* Slideshow container */
+.slideshow-container {
+    max-width: 1000px;
+    position: relative;
+    margin: auto;
+  }
+  
+  /* Hide the images by default */
+  .mySlides {
+    display: none;
+  }
+  
+  /* Next & previous buttons */
+  .prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin-top: -22px;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+  }
+  
+  /* Position the "next button" to the right */
+  .next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+  }
+  
+  /* On hover, add a black background color with a little bit see-through */
+  .prev:hover, .next:hover {
+    background-color: rgba(0,0,0,0.8);
+  }
+  
+  /* Caption text */
+  .text {
+    color: #f2f2f2;
+    font-size: 15px;
+    padding: 8px 12px;
+    position: absolute;
+    bottom: 8px;
+    width: 100%;
+    text-align: center;
+  }
+  
+  /* Number text (1/3 etc) */
+  .numbertext {
+    color: #f2f2f2;
+    font-size: 12px;
+    padding: 8px 12px;
+    position: absolute;
+    top: 0;
+  }
+  
+  /* The dots/bullets/indicators */
+  .dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+  }
+  
+  .active, .dot:hover {
+    background-color: #717171;
+  }
+  
+  /* Fading animation */
+  .fade {
+    -webkit-animation-name: fade;
+    -webkit-animation-duration: 1.5s;
+    animation-name: fade;
+    animation-duration: 1.5s;
+  }
+  
+  @-webkit-keyframes fade {
+    from {opacity: .4}
+    to {opacity: 1}
+  }
+  
+  @keyframes fade {
+    from {opacity: .4}
+    to {opacity: 1}
+  }
+
+  .previous {
+      margin: 40px 40px;
+  }
+/* previous  */
+/* sponsors */
+
+ .sponsor {
+     margin: 40px 0px;
+ }
+
+/* sponsors */
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    height: 40px;
+    width: 100%;
+    background-color: #40a075;
+    color: white;
+    text-align: center;
+}</style>
+    <title>CIA MLH</title>
+</head>
+
+<body>
+    <div class="landing">
+        <div class="img1">
+            <img src="{%static 'assets/hack/notstlinesAsset 3@4x Copy.png'%}" alt="">
+        </div>
+        <div class="img2">
+            <img src="{%static 'assets/hack/notstlinesAsset 3@4x.png'%}" alt="">
+        </div>
+        <div class="landing-text">
+            <h1 id="cia-title">CIA</h1>
+            <h1 id="hackathon">HACKATHON</h1>
+            <h3>ATRIA INSTITUTE OF TECHNOLOGY</h3>
+        </div>
+    </div>
+    <!--John-->
+    <div id="preguntas">
+        <h1 id="cia-title">About</h1>
+        <!-- <h1 id="hackathon">CIA HAck</h1> -->
+        <h3>ATRIA'S BIGGEST TINKERING PLAYGROUND</h3>
+
+
+        <div id="header">
+          <h1 id="about-heading">30 hours of Fun Engineering</h1>
+          <h4 class="about">
+            CIA Hackathon aims at bringing together engineers, designers, and students to hack and build life-changing solutions using rapid prototyping techniques. CIA Hackathon is a 30-hour event which will be held at Atria Institute of Technology on the 14 and 15 of March, 2020. The vision of CIA Hackathon is to identify and solve problems in improving the lives of the common man and harness technology to creatively demonstrate ideas.
+          </h4>
+        </div>
+
+        <h1 id="cia-title">CIA Hack'19</h1>
+        <!-- <h1 id="hackathon">HACKATHON</h1> -->
+        <h3>Previous Editions</h3>
+
+        <!--previous-->
+<div class="previous">
+            <!-- Slideshow container -->
+<div class="slideshow-container">
+
+    <!-- Full-width images with number and caption text -->
+    <div class="mySlides fade">
+      <div class="numbertext">1 / 4</div>
+      <img src="{%static 'assets/hack/previous1 (1).JPG'%}" style="width:100%">
+    </div>
+  
+    <div class="mySlides fade">
+      <div class="numbertext">2 / 4</div>
+      <img src="{%static 'assets/hack/previous1 (2).jpg'%}" style="width:100%">
+    </div>
+  
+    <div class="mySlides fade">
+      <div class="numbertext">3 / 4</div>
+      <img src="{%static 'assets/hack/previous1 (3).jpg'%}" style="width:100%">
+    </div>
+
+    <div class="mySlides fade">
+        <div class="numbertext">4 / 4</div>
+        <img src="{%static 'assets/hack/previous1 (4).jpg'%}" style="width:100%">
+      </div>
+  
+    <!-- Next and previous buttons -->
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+  </div>
+  <br>
+  
+  <!-- The dots/circles -->
+  <div style="text-align:center">
+    <span class="dot" onclick="currentSlide(1)"></span>
+    <span class="dot" onclick="currentSlide(2)"></span>
+    <span class="dot" onclick="currentSlide(3)"></span>
+    <span class="dot" onclick="currentSlide(4)"></span>
+  </div>
+</div>
+        <!--previous-->
+    
+        <h1 id="cia-title">FaQ</h1>
+        <!-- <h1 id="hackathon">HACKATHON</h1> -->
+        <h3 style="margin-bottom: 15px;">Details to get you started</h3>
+
+        <h3 class="faq-h3">I do not know anything technical. Can i take part ?</h3>
+        <div class="respuesta">
+            <p>Yes !! All that’s required is crazy interest.</p>
+        </div>
+        <h3 class="faq-h3">Is there any registration fee? </h3 class="faq-h3">
+        <div class="respuesta">
+            <p>No !!</p>
+        </div>
+        <h3 class="faq-h3">Is it mandatory to stay back overnight</h3 class="faq-h3">
+        <div class="respuesta">
+            <p>No, But you are going to miss the fun</p>
+        </div>
+        <h3 class="faq-h3">Where is it happening ?   </h3 class="faq-h3">
+        <div class="respuesta">
+          <p>
+              Atria Institute of Technology
+        </p>
+        </div>
+        <h3 class="faq-h3">What is a hackathon?</h3 class="faq-h3">
+        <div class="respuesta">
+          <p>
+            Hack + Marathon  =  Build something different | think out of the box + Marathon
+          </p>
+        </div>
+        <h3 class="faq-h3">If selected will we get components: </h3 class="faq-h3">
+        <div class="respuesta">
+          <p>
+            Cia will launch out a component list that we can provide. Reachout to us for more on this.        </p>
+        </div>
+        <h3 class="faq-h3">Who and how should I contact ?</h3 class="faq-h3">
+        <div class="respuesta">
+            <p>TBA</p>
+        </div>
+        <h3 class="faq-h3">I already have an idea, can I use it at the hackathon? </h3 class="faq-h3">
+        <div class="respuesta">
+            <p>Yes, provided you substantially improve your project.</p>
+        </div>
+    
+        <a href="#" id="cerrartodas">Close all</a>
+<!--sponsor-->
+<div class="sponsor">
+        <h1 id="cia-title">Sponsors/Partners</h1>
+        <!-- <h1 id="hackathon">HACKATHON</h1> -->
+        <h3 style="margin-bottom: 15px;">Together we amplify impact. </h3>
+        <div style="text-align: center;">
+            <h1 id="about-heading">Comming Soon</h1>
+            <h4 class="about">
+                Want to sponsor us? Write to communities.atria@gmail.com
+            </h4>
+          </div>
+
+    </div>
+<!--sponsor -->
+      </div> <!--global container-->
+
+      <div class="footer">
+        <p style="margin: 10px">#CommunitiesInAtria</p>
+      </div>
+
+
+      
+      <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+      <!-- <script  src="./css/index.js"></script> -->
+      <script>
+      var clics = 0;
+
+$(document).ready(function() {
+
+  $('.respuesta').hide();
+  $('#cerrartodas').hide();
+
+  $('h3').click(function() {
+
+    $(this).next('.respuesta').toggle(function() {
+
+      $(this).next('.respuesta');
+
+    }, function() {
+
+      $(this).next('.respuesta').fadeIn('fast');
+
+    });
+
+    if ($(this).hasClass('cerrar')) {
+      $(this).removeClass('cerrar');
+    } else {
+      $(this).addClass('cerrar');
+    };
+
+    if ($('.cerrar').length >= 3) {
+
+      $('#cerrartodas').fadeIn('fast');
+
+    } else {
+      $('#cerrartodas').hide();
+      var abiertas = $('.cerrar').length
+      console.log(abiertas);
+    }
+  }); //Close Function Click	            
+
+}); //Close Function Ready
+
+$('#cerrartodas').click(function() {
+  $('.respuesta').fadeOut(200);
+  $('h3').removeClass('cerrar');
+  $('#cerrartodas').fadeOut('fast');
+});
+
+var slideIndex = 1;
+showSlides(slideIndex);
+
+// Next/previous controls
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+// Thumbnail image controls
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+}</script>
+
+    <!--John-->
+</body>
+
+</html>

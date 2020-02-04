@@ -10,7 +10,7 @@ from allauth.account.adapter import get_adapter
 from allauth.account.utils import setup_user_email
 from phonenumber_field.modelfields import PhoneNumberField
 
-from .models import User,Events,UserType,UserTypeRegister,News,AttendRegister,Project
+from .models import User,Events,UserType,UserTypeRegister,News,AttendRegister,Project,InterestGroup,InterestGroupMember
 from rest_framework import serializers
 from cia import settings
 from django.contrib.auth import get_user_model, authenticate
@@ -88,6 +88,16 @@ class CustomRegisterSerializer(RegisterSerializer):
         user.save()
         return user
 '''
+
+class InterestGroupSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = InterestGroup
+        fields = ("id", "g_name","g_desc","g_img","g_head",'g_tellink','g_medium')
+""" class InterestGroupMemberSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = InterestGroupMember
+        fields = ("user") """
+
 class CustomUserDetailsSerializer(serializers.ModelSerializer):
 
     class Meta:

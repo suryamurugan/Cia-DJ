@@ -42,10 +42,14 @@ urlpatterns = [
     url(r'^account_inactive/$',TemplateView.as_view(),name = 'account_inactive'), # no idea y but register needs this
     path('',TemplateView.as_view(template_name="mainsite.html"),name="index"),
     path('events/',TemplateView.as_view(template_name="events.html"),name="events"),
+    path('interest-groups/',TemplateView.as_view(template_name="interest-groups.html"),name="interest-groups"),
     path('projects/',TemplateView.as_view(template_name="projects.html"),name="projects"),
     path('register/',register,name="register"),
     path('profile/',profile,name='profile'),
     path('visioneer/', visioneerview, name='visioneer'),
+
+    path('hack/', TemplateView.as_view(template_name="hack.html"), name='hackathon'),
+    path('raj/', TemplateView.as_view(template_name="raj.html"), name='raj'),
     
     
     re_path('api/(?P<version>(v1|v2))/', include('api.urls')),    

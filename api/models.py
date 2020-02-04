@@ -151,6 +151,7 @@ class Visioneer(models.Model):
     
 
 class InterestGroup(models.Model):
+    id = models.AutoField(primary_key=True)
     g_name= models.CharField('Group Name',max_length=275, null=False)
     g_desc= models.CharField('Group Description',max_length=400, null=False)
     g_img = models.ImageField(upload_to = 'images/group/', default = 'group/no-img.jpg')
@@ -158,5 +159,9 @@ class InterestGroup(models.Model):
     g_tellink= models.CharField('Telegram Link',max_length=225, null=False)
     g_medium=   models.CharField('Medium Link',max_length=225, null=False)
 
-    
+
+class InterestGroupMember(models.Model):
+    user = models.ForeignKey(User,on_delete=models.CASCADE,)
+    ig_id = models.ForeignKey(InterestGroup,on_delete = models.CASCADE)
+
 
