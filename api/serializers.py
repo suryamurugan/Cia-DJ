@@ -108,7 +108,7 @@ class CustomUserDetailsSerializer(serializers.ModelSerializer):
 class EventsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Events
-        fields = ("e_id","e_state","e_title","e_date",'e_start_time','e_end_time','e_venue','e_organizer','e_description','e_score','e_registration_link','e_photos_link','e_medium_link')
+        fields = ("e_id","e_state","e_title","e_image","e_date",'e_start_time','e_end_time','e_venue','e_organizer','e_description','e_score','e_registration_link','e_photos_link','e_medium_link')
 class NewsSerializer(serializers.ModelSerializer):
     class Meta:
         model = News

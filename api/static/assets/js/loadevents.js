@@ -2,6 +2,7 @@ var api = 'test.ciadev.ninja';
 function createEventCard(event) {
     let parent = document.querySelector('.event-list');
     let eventcard = document.createElement('li');
+    console.log(event.img);
 
     eventcard.innerHTML = `<div class="date">
                         <span>${event.month}</span>
@@ -62,7 +63,8 @@ function parseEventData(json) {
             month: months[date.getMonth()],
             register: e.e_registration_link,
             venue: e.e_venue,
-            img: e.e_photos_link,
+            img: e.e_image,
+            
             additionalLinks: {
                 'starts at': e.e_start_time.split(':')[0] + ':' + e.e_start_time.split(':')[1],
                 'ends at': e.e_end_time.split(':')[0] + ':' + e.e_end_time.split(':')[1],

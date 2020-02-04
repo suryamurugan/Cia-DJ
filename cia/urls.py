@@ -13,6 +13,8 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
+
 from django.conf.urls.static import static
 
 from django.contrib import admin
@@ -29,6 +31,7 @@ from api.views import HelloView,index,loginPage
 from django.contrib.auth.views import LoginView
 from django.views.generic import TemplateView, RedirectView
 from . import settings
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns 
 
 
 urlpatterns = [
@@ -61,5 +64,7 @@ urlpatterns = [
     url(r'rest/reset/confirm/done/$', password_reset_complete, name='password_reset_complete'),
     path('activate/<uid>/<token>/',something),     # ACTIVATEING ACCOUNT - LINK MAILED 
 ]
+urlpatterns += staticfiles_urlpatterns()
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 # + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

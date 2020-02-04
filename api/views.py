@@ -297,15 +297,27 @@ def getmembers(request,version):
     try:
         ig = InterestGroup.objects.get(id=request.GET['id'])
         members = InterestGroupMember.objects.filter(ig_id=ig)
+        users = {}
+        count = 1
+        for member in members:
+            print(member.user.username)
+            users[count]= member.user.username
+            count =count+1
+        #data = serializers.serialize('json', self.get_queryset())
+        #data = serializers.serialize('json', users)
+        #return HttpResponse(data, content_type="application/json")
+        print(users)
+        
+        
 
       #  users = []
         #print(InterestGroupMemberSerializer(members))
        # for member in members:
        #     users.add(member)
         #print(users)
-        return Response({"response":True, "members":"xsaxa"})
+        return Response({"response":True, "members":users})
     except:
-        return Response({"response":False,"id":id})
+        return Response({"response":False})
 
 
 # CUSTOM LOGIN VIEW 

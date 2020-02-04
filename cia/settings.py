@@ -11,6 +11,17 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+# Absolute filesystem path to the directory that will hold user-uploaded files.
+# Example: "/home2/media/media.lawrence.com/media/"
+#MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'images')
+MEDIA_ROOT='/home/cia/Cia-DJ' #(i.e: '/home/ike/project/media/')
+
+
+# URL that handles the media served from MEDIA_ROOT. Make sure to use a
+# trailing slash.
+# Examples: "http://media.lawrence.com/media/", "http://example.com/media/"
+MEDIA_URL = '/images/'
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
