@@ -37,7 +37,7 @@ class Dept(models.Model):
 
 class User(AbstractUser):
     #u_id= models.IntegerField(primary_key=True)
-    u_id= models.AutoField(primary_key=True)
+    id= models.AutoField(primary_key=True)
     usn = models.TextField(max_length=10, blank=True)
     #dept = models.ForeignKey(Dept,on_delete=models.CASCADE,null=True,blank=True)
     dept = models.IntegerField(default=1,blank=True,null=True)
@@ -46,7 +46,7 @@ class User(AbstractUser):
     ut_id = models.IntegerField(default=1,blank=True,null=True)
     #ut = models.IntegerField(blank=True,default=1)
     def __str__(self):
-        return "{} - {} - {} - {} - {} - {} - {}".format(self.u_id, self.usn,self.username,self.dept,self.email,self.phone_number,self.ut_id)
+        return "{} - {} - {} - {} - {} - {} - {}".format(self.id, self.usn,self.username,self.dept,self.email,self.phone_number,self.ut_id)
  
 
 
