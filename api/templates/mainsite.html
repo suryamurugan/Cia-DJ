@@ -42,6 +42,9 @@
             <li class="projects-btn">
                 <a href="{% url 'projects' %}">Projects</a>
             </li>
+            <li class="events-btn">
+                <a href="{% url 'interest-groups' %}">Interest Groups</a>
+            </li>
             {% if user.is_authenticated %}
             {% else %}
             <li class="register-btn">
