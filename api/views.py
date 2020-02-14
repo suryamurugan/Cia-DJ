@@ -21,6 +21,8 @@ from django.template.loader import render_to_string
 from django.shortcuts import render, redirect
 from .forms import UserSignUpForm,MyRegistrationForm
 from django.http import HttpResponse
+from django.contrib.auth.models import User
+
 
 
 
@@ -170,7 +172,8 @@ def profile(request):
     else :
         return render(request, 'registration/register.html')    """
 
-
+""" """ 
+#WORKING REGISTER 2.0
 def register(request):
     a = 1
     #if request.user.is_authenticated():
@@ -185,24 +188,25 @@ def register(request):
             if form.is_valid():
                 print("form is valid")
                 form.save()
+                user = User.objects.get(email=request.POST.get('email'))
+                user.is_active = False
                 mail_subject = 'Activate your CIA account.'
                 to_email = request.POST.get('email')
                 message = render_to_string('acc_active_email.html', {
                 'user': 'mcdm', 'domain':'current_site.domain',
-                #'uid': user.pk,
-                'uid': '',
-                #'token': account_activation_token.make_token(user),
-                'token': '',
+                'uid': user.pk,
+                'token': account_activation_token.make_token(user),
+                
                 })
                 email = EmailMessage(mail_subject, message, to=[to_email])
                 email.send()
-                return render('mainsite.html')
+                return render(request,'mainsite.html')
         print("yo2")
         context = {}
         context.update(csrf(request))
         context['form'] = MyRegistrationForm()
 
-        return render(request, 'register.html', context)
+        return render(request, 'register.html', context) 
 
 def loginPage(request):
     if request.method == 'POST':
