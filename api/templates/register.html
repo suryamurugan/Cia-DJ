@@ -7,10 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap" rel="stylesheet">
-    
+
     <link rel="stylesheet" href="{% static 'assets/css/loginAndRegister/login.css' %}">
-    
-    
+
+
     <title>join us</title>
 </head>
 
@@ -23,37 +23,57 @@
             CIA
         </h1>
         <form class="register" action="{% url 'register' %}" method="POST">
-          {% csrf_token %}
+            {% csrf_token %}
             <div class="text-ip">
-                <input required type="text" id="email" name="email">
-                <label for="email"><span>Email</span></label>
+                {{ form.username.errors }}
+                {{ form.username.label_tag }}
+                {{ form.username }}
             </div>
             <div class="text-ip">
-                <input required type="text" id="username" name="username">
-                <label for="username"><span>Username</span></label>
+                {{ form.email.errors }}
+                {{ form.email.label_tag }}
+                {{ form.email }}
             </div>
             <div class="text-ip">
-                <input required type="password" id="password" name="password">
-                <label for="password"><span>Password</span></label>
+                {{ form.password1.errors }}
+                {{ form.password1.label_tag }}
+                {{ form.password1 }}
             </div>
             <div class="text-ip">
-                <input required type="password" id="password" name="password">
-                <label for="password"><span>Re-type password</span></label>
+                {{ form.password2.errors }}
+                {{ form.password2.label_tag }}
+                {{ form.password2 }}
             </div>
             <div class="text-ip">
+                {{ form.usn.errors }}
+                {{ form.usn.label_tag }}
+               <!--  {{ form.usn }} -->
+               <!-- <textarea name="usn" cols="40" rows="10" maxlength="10" id="id_usn"> -->
                 <input required type="text" id="usn" name="usn">
-                <label for="usn"><span>USN</span></label>
+            </textarea>
             </div>
             <div class="text-ip">
-                <input required type="tel" id="number" name="number">
-                <label for="number"><span>Phone number</span></label>
+                {{ form.dept.errors }}
+                {{ form.dept.label_tag }}
+                {{ form.dept }}
             </div>
-
+          <!--   <div class="text-ip">
+                {{ form.ut_id.errors }}
+                {{ form.ut_id.label_tag }}
+                {{ form.ut_id }}
+            </div> -->
+            <div class="text-ip">
+                {{ form.phone_number.errors }}
+                {{ form.phone_number.label_tag }}
+                {{ form.phone_number }}
+            </div>
+        
             <div class="submit-section">
                 <button type="submit">Sign up</button>  
                 <a href="login.html">Log in?</a>
             </div>
         </form>
+
     </main>
 
     <script>

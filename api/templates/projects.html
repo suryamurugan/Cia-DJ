@@ -1,4 +1,4 @@
-{% load staticfiles %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,20 +6,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap" rel="stylesheet">
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'assets/css/projects.css'%}">
     
+    <link rel="stylesheet" href="{% static 'assets/css/projects.css' %}">
+   
     <title>projects</title>
+
+    <script src="https://cdn.jsdelivr.net/gh/cferdinandi/saferInnerHTML@1/dist/saferInnerHTML.polyfills.min.js"
+        defer></script>
+
+    <script src="{% static 'assets/js/load-projects.js' %}"></script>
 </head>
 
 <body>
     <div class="bottom-nav">
-        <h3><a href="{% url 'index' %}">Home</a></h3>
-        <h3><a href="{% url 'index' %}">About</a></h3>
-        <h3><a href="{% url 'events' %}">Events</a></h3>
-        <h3 class="selected-tab"><a href="{% url 'projects' %}">Projects</a></h3class="selected-tab">
+        <h3><a href="./index.html">Home</a></h3>
+        <h3><a href="./index.html">About</a></h3>
+        <h3><a href="./events.html">Events</a></h3>
+        <h3 class="selected-tab"><a href="./projects.html">Projects</a></h3>
     </div>
     <section class="projects">
         <div class="left-project">
@@ -46,8 +50,8 @@
                             velit voluptate assumenda inventore laborum fuga, placeat, dicta harum nostrum nam ipsam
                             exercitationem, alias perspiciatis facilis distinctio hic.
                             <br><br>
-                            register: <a href="">something.com</a>
-                        </p>
+
+                        </p><a href="">Register</a>
 
                     </div>
                 </div>
@@ -61,7 +65,7 @@
             </div>
             <ul class="project-list">
 
-                <li>
+                <!-- <li>
                     <div class="project-img">
                         <img src="https://i.gadgets360cdn.com/large/google_project_-reuters_full_1571202283482.JPG"
                             alt="">
@@ -75,8 +79,8 @@
                         </p>
                     </div>
                 </li>
+ -->
 
-                
 
             </ul>
         </div>

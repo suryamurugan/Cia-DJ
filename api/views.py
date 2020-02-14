@@ -4,7 +4,7 @@ from rest_framework import generics
 from rest_framework.viewsets import GenericViewSet
 from rest_framework.mixins import CreateModelMixin
 from django.contrib.auth import get_user_model
-from .serializers import UserSerializer,EventsSerializer,NewsSerializer,AttendRegisterSerializer,ProjectSerializer,InterestGroupSerializer
+from .serializers import UserSerializer,EventsSerializer,NewsSerializer,AttendRegisterSerializer,ProjectSerializer,InterestGroupSerializer,NewRegisterSerializer
 from rest_framework.permissions import AllowAny
 from rest_auth.registration.views import RegisterView
 from .models import User,Events,News,AttendRegister,Project,InterestGroup,InterestGroupMember
@@ -19,7 +19,7 @@ from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.template.loader import render_to_string
 from django.shortcuts import render, redirect
-from .forms import UserSignUpForm
+from .forms import UserSignUpForm,MyRegistrationForm
 from django.http import HttpResponse
 
 
@@ -54,6 +54,7 @@ from django.core.mail import EmailMessage
 from .forms import UserSignUpForm,VisioneerForm
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
+from django.template.context_processors import csrf
 
 
 
@@ -118,7 +119,8 @@ def profile(request):
     return render(request,'registration/profile.html')
 
 
-def register(request):
+# DJAGO USER REGISTER
+""" def register(request):
     
     if request.method == 'POST':
         form = UserSignUpForm(request.POST)
@@ -134,8 +136,73 @@ def register(request):
         form = UserSignUpForm()
     context = {"form":form}
     return render(request,'registration/register.html',context)
+        """
+#@api_view(['POST'])
+""" def register(request):
+    if request.method == 'POST':
+        print("POST")
+        print(request)
+        username = request.POST.get('username')
+        email = request.POST.get('email')
+        password1 = request.POST.get('password1')
+        password2 = request.POST.get('password2')
+        usn = request.POST.get('usn')
+        dept = request.POST.get('dept')
+        ut_id = request.POST.get('ut_id')
+        phone_number = request.POST.get('phone_number')
+        d={}
+        d['username']=username
+        d['email']=email
+        d['password1']=password1
+        d['password2']=password2
+        d['usn']=usn
+        d['dept']=dept
+        d['ut_id']=ut_id
+        d['phone_number']=phone_number
+
+        r = requests.post(url = 'http://test.ciadev.ninja:8000/register/', data = d)
+        print("this is r",r)
+        #data = json.dumps(r.content)
+        #print(data)
+    
 
         
+    else :
+        return render(request, 'registration/register.html')    """
+
+
+def register(request):
+    a = 1
+    #if request.user.is_authenticated():
+    if a>2:
+        return HttpResponseRedirect('/user/')
+    else:
+        print("yo")
+        if request.method == 'POST':
+            print("Its post")
+            form = MyRegistrationForm(request.POST)
+            print("created form")
+            if form.is_valid():
+                print("form is valid")
+                form.save()
+                mail_subject = 'Activate your CIA account.'
+                to_email = request.POST.get('email')
+                message = render_to_string('acc_active_email.html', {
+                'user': 'mcdm', 'domain':'current_site.domain',
+                #'uid': user.pk,
+                'uid': '',
+                #'token': account_activation_token.make_token(user),
+                'token': '',
+                })
+                email = EmailMessage(mail_subject, message, to=[to_email])
+                email.send()
+                return render('mainsite.html')
+        print("yo2")
+        context = {}
+        context.update(csrf(request))
+        context['form'] = MyRegistrationForm()
+
+        return render(request, 'register.html', context)
 
 def loginPage(request):
     if request.method == 'POST':
