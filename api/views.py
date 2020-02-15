@@ -183,30 +183,34 @@ def register(request):
         print("yo")
         if request.method == 'POST':
             print("Its post")
-            form = MyRegistrationForm(request.POST)
-            print("created form")
-            if form.is_valid():
-                print("form is valid")
-                form.save()
-                user = User.objects.get(email=request.POST.get('email'))
-                user.is_active = False
-                mail_subject = 'Activate your CIA account.'
-                to_email = request.POST.get('email')
-                message = render_to_string('acc_active_email.html', {
-                'user': 'mcdm', 'domain':'current_site.domain',
-                'uid': user.pk,
-                'token': account_activation_token.make_token(user),
-                
-                })
-                email = EmailMessage(mail_subject, message, to=[to_email])
-                email.send()
-                return render(request,'mainsite.html')
-        print("yo2")
-        context = {}
-        context.update(csrf(request))
-        context['form'] = MyRegistrationForm()
+            
+            try:
+                form = MyRegistrationForm(request.POST)
+                if form.is_valid():
+                    print("form is valid")
+                    form.save()
+                    user = User.objects.get(email=request.POST.get('email'))
+                    user.is_active = False
+                    mail_subject = 'Activate your CIA account.'
+                    to_email = request.POST.get('email')
+                    message = render_to_string('acc_active_email.html', {
+                    'user': user, 'domain':'test.ciadev.ninja',
+                    'uid': user.pk,
+                    'token': account_activation_token.make_token(user),
 
-        return render(request, 'register.html', context) 
+                    })
+                    email = EmailMessage(mail_subject, message, to=[to_email])
+                    email.send()
+                    return render(request,'mainsite.html')
+            except:
+                return render(request,'oops.html')
+            return render(request,'oops.html')
+        else:
+            print("yo2")
+            context = {}
+            context.update(csrf(request))
+            context['form'] = MyRegistrationForm()
+            return render(request, 'register.html', context) 
 
 def loginPage(request):
     if request.method == 'POST':
