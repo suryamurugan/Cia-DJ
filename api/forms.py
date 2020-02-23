@@ -25,7 +25,7 @@ class MyRegistrationForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = {'username', 'email','password1', 'password2','usn','dept','ut_id','phone_number' }
+        fields = {'username', 'email','password1', 'password2','usn','dept','ut_id','phone_number','is_active' }
 
     def save(self, commit=True):
         user = super(MyRegistrationForm, self).save(commit=False)

@@ -44,6 +44,12 @@
                 {{ form.password2.label_tag }}
                 {{ form.password2 }}
             </div>
+
+            <input type="checkbox" name="is_active" id="id_is_active" unchecked  hidden/>
+
+          
+
+
             <div class="text-ip">
                 {{ form.usn.errors }}
                 {{ form.usn.label_tag }}
@@ -52,11 +58,22 @@
                 <input required type="text" id="usn" name="usn">
             </textarea>
             </div>
+         
             <div class="text-ip">
+                
                 {{ form.dept.errors }}
                 {{ form.dept.label_tag }}
-                {{ form.dept }}
+    
+                <select  type="number" name="dept" value="1" id="id_dept">
+                    <option value="1">CSE</option>
+                    <option value="2">ISE</option>
+                    <option value="3">ECE</option>
+                    <option value="4">MECH</option>
+                    <option value="5">CIVIL</option>
+                  </select> 
             </div>
+
+            
           <!--   <div class="text-ip">
                 {{ form.ut_id.errors }}
                 {{ form.ut_id.label_tag }}
@@ -64,13 +81,14 @@
             </div> -->
             <div class="text-ip">
                 {{ form.phone_number.errors }}
-                {{ form.phone_number.label_tag }}
-                {{ form.phone_number }}
+                <label for="id_phone_number">Phone number: (Add +91)</label>
+                <input type="tel" name="phone_number" maxlength="128" id="id_phone_number" placeholder="+91XXXXXXXXXX"
+                pattern="+[0-9]{2}-[0-9]{10}" />
             </div>
         
             <div class="submit-section">
                 <button type="submit">Sign up</button>  
-                <a href="login.html">Log in?</a>
+                <a href="{% url 'login' %}">Log in?</a>
             </div>
         </form>
 

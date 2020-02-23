@@ -191,6 +191,7 @@ def register(request):
                     form.save()
                     user = User.objects.get(email=request.POST.get('email'))
                     user.is_active = False
+                    user.save()
                     mail_subject = 'Activate your CIA account.'
                     to_email = request.POST.get('email')
                     message = render_to_string('acc_active_email.html', {
@@ -294,7 +295,7 @@ class ListEventsView(generics.ListAPIView):
     """
     Provides a get method handler.
     """
-    queryset = Events.objects.all()
+    queryset = Events.objects.all().order_by('-e_date')
     serializer_class = EventsSerializer
 
 class ListNewsView(generics.ListAPIView):
@@ -302,7 +303,7 @@ class ListNewsView(generics.ListAPIView):
     serializer_class = NewsSerializer
 
 class ProjectView(generics.ListAPIView):
-    queryset = Project.objects.all()
+    queryset = Project.objects.all().order_by('-p_datetime')
     serializer_class = ProjectSerializer
 
 

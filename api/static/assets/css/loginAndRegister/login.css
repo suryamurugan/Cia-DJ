@@ -77,6 +77,16 @@ form input {
     padding-left: 10px;
 }
 
+form select {
+    border: none;
+    background: #1a1a22;
+    height: 30px;
+    border-radius: 4px;
+    outline: none;
+    padding-left: 10px;
+}
+
+
 form>.text-ip label {
     position: absolute;
     width: 92%;
@@ -174,6 +184,21 @@ button {
         border-radius: 4px;
         outline: none;
         padding-left: 10px;
-        /* background: blue; */
+        /* 
+        
+        background: blue; */
+    }
+
+    form select {
+        border: none;
+        background: #1a1a22;
+        width: 100%;
+        height: 50px;
+        border-radius: 4px;
+        outline: none;
+        padding-left: 10px;
+        /* 
+        
+        background: blue; */
     }
 }

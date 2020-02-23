@@ -45,7 +45,7 @@ SECURE_CONTENT_TYPE_NOSNIFF = True
 
 
 #ALLOWED_HOSTS = ['167.71.238.192','cia.atria.edu','test.ciadev.ninja','iot.atria.edu']
-ALLOWED_HOSTS = ['test.ciadev.ninja','sufibox']
+ALLOWED_HOSTS = ['test.ciadev.ninja','sufibox','167.71.238.192']
 
 # Application definition
 

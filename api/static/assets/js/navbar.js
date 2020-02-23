@@ -12,6 +12,7 @@
 const navbtns = () => {
     const homebtn = document.querySelector('.cia-tag');
     const aboutbtn = document.querySelector('.about-btn');
+    const blogbtn = document.querySelector('.blog-btn');
     const projectsbtn = document.querySelector('.projects-btn');
     const eventsbtn = document.querySelector('.events-btn');
     homebtn.addEventListener('click', () => document.querySelector('header').scrollIntoView(false));
