@@ -294,7 +294,9 @@ footer .contact-section a {
 
 /**/
 @media only screen and (max-width: 600px) {
-
+    footer{
+        padding-bottom: 100px;
+    }
     .about-btn,
     .events-btn,
     .projects-btn {
