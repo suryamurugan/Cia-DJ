@@ -34,8 +34,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '#s6=@c-7v412-p6nxp17a@p^%rau--v=t&vd!7dh(sl&f4a4p%'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-#DEBUG = True
-DEBUG = True
+DEBUG = False
+#DEBUG = False
 #SECURE_SSL_REDIRECT = True
 SESSION_COOKIE_SECURE = False
 CSRF_COOKIE_SECURE = False
@@ -45,7 +45,7 @@ SECURE_CONTENT_TYPE_NOSNIFF = True
 
 
 #ALLOWED_HOSTS = ['167.71.238.192','cia.atria.edu','test.ciadev.ninja','iot.atria.edu']
-ALLOWED_HOSTS = ['test.ciadev.ninja','sufibox','167.71.238.192']
+ALLOWED_HOSTS = ['cia.atria.edu','test.ciadev.ninja']
 
 # Application definition
 
@@ -97,6 +97,10 @@ ROOT_URLCONF = 'cia.urls'
 
 CORS_ORIGIN_ALLOW_ALL =True
 CORS_ALLOW_CREDENTIALS =True
+
+CORS_ORIGIN_WHITELIST = (
+       'http://cia.atria.edu',
+)
 
 TEMPLATES = [
     {
