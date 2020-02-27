@@ -15,6 +15,10 @@ body {
     transition: background 2.5s;
 }
 
+.events-title {
+    margin-bottom: 20px;
+}
+
 .about-event p {
     color: rgba(255, 255, 255, 0.76);
     line-height: 25px;
