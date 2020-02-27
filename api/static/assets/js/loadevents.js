@@ -1,9 +1,9 @@
-var api = 'test.ciadev.ninja';
+var api = 'cia.atria.edu';
 function createEventCard(event) {
     let parent = document.querySelector('.event-list');
     let eventcard = document.createElement('li');
     console.log(event.img);
-
+    event.discription = event.discription.slice(0,120) ;
     eventcard.innerHTML = `<div class="date">
                         <span>${event.month}</span>
                         <h1>${event.date}</h1>

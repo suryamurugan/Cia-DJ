@@ -2,7 +2,7 @@ var api = 'test.ciadev.ninja';
 function createprojectCard(project) {
     let parent = document.querySelector('.project-list');
     let projectcard = document.createElement('li');
-    project.discription = project.discription.slice(0,120);
+
     projectcard.innerHTML = `<div class="date">
                         <span>${project.month}</span>
                         <h1>${project.date}</h1>
@@ -15,7 +15,7 @@ function createprojectCard(project) {
                         <h1>
                             ${project.title}
                         </h1>
-                        <p>${project.discription}</p>
+                        <p>${project.discription.slice(0,1)}</p>
                     </div>`;
     parent.appendChild(projectcard);
 }

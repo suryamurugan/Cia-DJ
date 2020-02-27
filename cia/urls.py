@@ -20,6 +20,8 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path,re_path, include
 from django.conf.urls import url
+from django.views.static import serve 
+
 
 from allauth.account.views import confirm_email
 from api.views import attend,something,getUser,activate,VeryNewCustomRegisterView,testReset,CustomLoginView,register,profile,VisioneerCreate,visioneerview,getjsonmodel,getjsonmodel2
@@ -63,8 +65,11 @@ urlpatterns = [
     url(r'rest/reset/confirm/(?P<uidb64>[0-9A-Za-z]+)-(?P<token>.+)/$', password_reset_confirm, name='password_reset_confirm'), # POST RESET MAIL 
     url(r'rest/reset/confirm/done/$', password_reset_complete, name='password_reset_complete'),
     path('activate/<uid>/<token>/',something),     # ACTIVATEING ACCOUNT - LINK MAILED 
+
+    url(r'^media/(?P<path>.*)$', serve,{'document_root': settings.MEDIA_ROOT}), 
+
 ]
 urlpatterns += staticfiles_urlpatterns()
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-# + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+#+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
