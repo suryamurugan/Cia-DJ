@@ -186,7 +186,12 @@ html {}
     display: none;
 }
 
+.date{display:none}
+
 @media only screen and (max-width: 600px) {
+    .date{display:none}
+
+
     .projects {
         display: block;
     }
