@@ -1,13 +1,10 @@
 var api = 'test.ciadev.ninja';
+let allProjects;
 function createprojectCard(project) {
     let parent = document.querySelector('.project-list');
     let projectcard = document.createElement('li');
-
-    projectcard.innerHTML = `<div class="date">
-                        <span>${project.month}</span>
-                        <h1>${project.date}</h1>
-                    </div>
-                    <div class="project-img">
+    projectcard.setAttribute('data-index', project.index);
+    projectcard.innerHTML = `<div class="project-img">
                         <img src="${project.img}"
                             alt="">
                     </div>
@@ -18,6 +15,10 @@ function createprojectCard(project) {
                         <p>${project.discription}</p>
                     </div>`;
     parent.appendChild(projectcard);
+    projectcard.addEventListener('click', function () {
+        console.log(Number(this.getAttribute('data-index')));
+        createRecentprojectCard(allProjects[Number(this.getAttribute('data-index'))])
+    })
 }
 function createRecentprojectCard(project) {
 
@@ -29,7 +30,7 @@ function createRecentprojectCard(project) {
 
     saferInnerHTML(projectTitle, project.title);
     saferInnerHTML(projectDiscription, project.discription);
-    
+
     if (project.additionalLinks !== undefined) {
         let linksNames = Object.keys(project.additionalLinks);
         let links = Object.values(project.additionalLinks);
@@ -44,7 +45,7 @@ function createRecentprojectCard(project) {
 }
 function parseprojectData(json) {
     var projects = [];
-    json.forEach((p) => {
+    json.forEach((p, i) => {
         /* let date = new Date(p.p_date);
         const months = ['Jan', 'Feb', 'Mar', 'April', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec']; */
         /* let keys = Object.keys(json);
@@ -54,6 +55,7 @@ function parseprojectData(json) {
     
         }); */
         let project = {
+            index: i,
             title: p.p_title,
             discription: p.p_desc,
             register: p.p_apply_link,
@@ -90,6 +92,7 @@ function updateUI(projects) {
             if (i === 0) {
                 project.tag = 'Latest';
                 createRecentprojectCard(project);
+                createprojectCard(project);
             } else {
                 createprojectCard(project);
             }
@@ -105,7 +108,8 @@ function get() {
     xmlhttp.onreadystatechange = function () {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
             var myArr = JSON.parse(xmlhttp.responseText);
-            updateUI(parseprojectData(myArr));
+            allProjects = parseprojectData(myArr);
+            updateUI(allProjects);
 
         }
     };
@@ -136,4 +140,5 @@ createprojectCard({
     title: 'test',
     discription: 'testtes ttesttestt esttestte sttest test'
 });
+
  */
