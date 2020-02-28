@@ -20,6 +20,7 @@ function createprojectCard(project) {
         createRecentprojectCard(allProjects[Number(this.getAttribute('data-index'))])
     })
 }
+
 function createRecentprojectCard(project) {
 
     /* let dateNode = document.querySelector('.date h1'); */
