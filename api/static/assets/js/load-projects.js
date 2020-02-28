@@ -3,8 +3,15 @@ let allProjects;
 function createprojectCard(project) {
     let parent = document.querySelector('.project-list');
     let projectcard = document.createElement('li');
+
     projectcard.setAttribute('data-index', project.index);
-    projectcard.innerHTML = `<div class="project-img">
+    project.discription = project.discription.slice(0,120);
+    projectcard.innerHTML = `<div class="date">
+                        <span>${project.month}</span>
+                        <h1>${project.date}</h1>
+                    </div>
+                    <div class="project-img">
+
                         <img src="${project.img}"
                             alt="">
                     </div>

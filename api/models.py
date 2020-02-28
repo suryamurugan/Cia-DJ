@@ -112,6 +112,8 @@ class Project(models.Model):
     p_medium_link = models.CharField(max_length=250, null=False, default='https://www.medium.com')
     p_github_link = models.CharField(max_length=250, null=False, default='https://www.github.com')
     p_apply_link = models.CharField(max_length=250, null=False, default='https://www.google.com')
+    def __str__(self):
+        return "{} - {}".format(self.p_id, self.p_title)
 
 class EmailOrUsernameModelBackend(object):
     """
@@ -159,6 +161,9 @@ class InterestGroup(models.Model):
     g_head= models.ForeignKey(User,on_delete=models.CASCADE)
     g_tellink= models.CharField('Telegram Link',max_length=225, null=False)
     g_medium=   models.CharField('Medium Link',max_length=225, null=False)
+    def __str__(self):
+        return "{} - {}".format(self.id, self.g_name)
+    
 
 
 class InterestGroupMember(models.Model):
