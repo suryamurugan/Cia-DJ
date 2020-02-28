@@ -123,12 +123,12 @@ html {}
 
 }
 
-/* .right-project .date {
+.right-project .date {
     display: inline-block;
     height: 80%;
     width: 40px;
     padding-top: 10px;
-} */
+}
 
 .right-project .project-img {
     width: 160px;
