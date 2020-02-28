@@ -1,12 +1,3 @@
-<<<<<<< HEAD
-var api = 'cia.atria.edu';
-function createEventCard(event) {
-    let parent = document.querySelector('.event-list');
-    let eventcard = document.createElement('li');
-    console.log(event.img);
-    event.discription = event.discription.slice(0,120) ;
-    eventcard.innerHTML = `<div class="date">
-=======
 ((api = 'test.ciadev.ninja') => {
     let allEvents;
     function createEventCard(event) {
@@ -14,7 +5,6 @@ function createEventCard(event) {
         let eventcard = document.createElement('li');
         eventcard.setAttribute('data-index', event.index);
         saferInnerHTML(eventcard, `<div class="date">
->>>>>>> e392e246893767b73dcefe52174cb963ccd273a4
                         <span>${event.month}</span>
                         <h1>${event.date}</h1>
                     </div>
