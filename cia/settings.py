@@ -14,13 +14,13 @@ import os
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home2/media/media.lawrence.com/media/"
 #MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'images')
-MEDIA_ROOT='/home/cia/Cia-DJ' #(i.e: '/home/ike/project/media/')
+MEDIA_ROOT='/home/cia/Cia-DJ/media/' #(i.e: '/home/ike/project/media/')
 
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
 # Examples: "http://media.lawrence.com/media/", "http://example.com/media/"
-MEDIA_URL = '/images/'
+MEDIA_URL = 'http://cia.atria.edu/media/'
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -31,7 +31,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '#s6=@c-7v412-p6nxp17a@p^%rau--v=t&vd!7dh(sl&f4a4p%'
+SECRET_KEY = ''
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -137,7 +137,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'ciadb',
         'USER': 'root',
-        'PASSWORD': 'ciafriday',
+        'PASSWORD': '',
         'HOST': 'localhost',
         'PORT': '',
     }
@@ -239,7 +239,7 @@ ACCOUNT_ADAPTER = 'api.adapters.CustomUserAccountAdapter'
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'communities.atria@gmail.com'
-EMAIL_HOST_PASSWORD = 'berylliumguacamoleb'
+EMAIL_HOST_PASSWORD = ''
 EMAIL_PORT = 587
 DEFAULT_FROM_EMAIL  = 'communities.atria@gmail.com'
 
