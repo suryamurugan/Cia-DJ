@@ -13,7 +13,7 @@ django-phonenumber-field==3.0.1
 django-rest-auth==0.9.5
 django-rest-passwordreset==1.0.0
 django-widget-tweaks==1.4.5
-djangorestframework==3.10.3
+djangorestframework==3.11.2
 gunicorn==19.9.0
 idna==2.8
 oauthlib==3.1.0
